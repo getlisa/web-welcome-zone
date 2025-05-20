@@ -1,0 +1,150 @@
+
+import { useEffect, useRef, useState } from 'react';
+import { Button } from '@/components/ui/button';
+
+const personas = [
+  {
+    id: "owners",
+    title: "Business Owners",
+    benefits: [
+      "Get visibility across your entire business",
+      "Reduce operational costs by 15-20%",
+      "Make data-driven decisions faster"
+    ],
+    icon: "👑"
+  },
+  {
+    id: "operations",
+    title: "Operations Managers",
+    benefits: [
+      "Optimize scheduling and resource allocation",
+      "Automate routine decisions and workflows",
+      "Improve team productivity metrics"
+    ],
+    icon: "⚙️"
+  },
+  {
+    id: "finance",
+    title: "Finance / Collections Teams",
+    benefits: [
+      "Reduce DSO (Days Sales Outstanding)",
+      "Prioritize collection efforts intelligently",
+      "Automate customer payment reminders"
+    ],
+    icon: "💵"
+  },
+  {
+    id: "field",
+    title: "Field Supervisors",
+    benefits: [
+      "Better coordination between office and field",
+      "Reduce paperwork and manual data entry",
+      "Real-time updates and job status tracking"
+    ],
+    icon: "🔧"
+  }
+];
+
+const TailoredSection = () => {
+  const [activePersona, setActivePersona] = useState("owners");
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+    );
+
+    const elements = document.querySelectorAll('.tailored-reveal');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  const currentPersona = personas.find(p => p.id === activePersona) || personas[0];
+
+  return (
+    <section id="tailored" ref={sectionRef} className="section-padding relative">
+      {/* Background accent */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-lisa-cyan/10 rounded-full blur-[150px]"></div>
+      <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-lisa-violet/10 rounded-full blur-[150px]"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 tailored-reveal opacity-0">
+            Tailored for <span className="gradient-text">You</span>
+          </h2>
+          <p className="text-lg text-lisa-text tailored-reveal opacity-0" style={{ animationDelay: '0.2s' }}>
+            LISA adapts to your specific role and helps solve your biggest challenges.
+          </p>
+        </div>
+        
+        <div className="grid lg:grid-cols-[1fr,1.5fr] gap-12 items-center">
+          {/* Persona selector */}
+          <div className="order-2 lg:order-1 tailored-reveal opacity-0" style={{ animationDelay: '0.3s' }}>
+            <div className="glass-card p-10 h-full">
+              <div className="text-4xl mb-6 glass h-20 w-20 rounded-full flex items-center justify-center">
+                {currentPersona.icon}
+              </div>
+              <h3 className="text-2xl font-semibold mb-6">{currentPersona.title}</h3>
+              <ul className="space-y-4">
+                {currentPersona.benefits.map((benefit, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <span className="text-lisa-cyan text-lg">✓</span>
+                    <span className="text-white/90">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <Button className="bg-gradient-primary hover:opacity-90 transition-all hover:scale-105 rounded-xl">
+                  See How It Works For {currentPersona.title}
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Tabs */}
+          <div className="order-1 lg:order-2 tailored-reveal opacity-0" style={{ animationDelay: '0.4s' }}>
+            <div className="grid grid-cols-2 gap-6">
+              {personas.map((persona) => (
+                <button
+                  key={persona.id}
+                  className={`glass-card p-6 text-center transition-all ${
+                    activePersona === persona.id 
+                      ? 'bg-white/10 shadow-lg shadow-lisa-violet/10' 
+                      : 'hover:bg-white/5'
+                  }`}
+                  onClick={() => setActivePersona(persona.id)}
+                >
+                  <div className="text-3xl mb-4">{persona.icon}</div>
+                  <h4 className="text-xl font-medium">{persona.title}</h4>
+                  <div 
+                    className={`w-10 h-0.5 bg-gradient-primary mx-auto mt-4 transition-all ${
+                      activePersona === persona.id ? 'w-16' : 'w-8 opacity-50'
+                    }`}>
+                  </div>
+                </button>
+              ))}
+            </div>
+            
+            <div className="mt-12 glass-card p-8">
+              <p className="text-lg text-center text-white/80">
+                "LISA adapts to your specific role in the business, providing the right insights and automation where you need it most."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TailoredSection;
