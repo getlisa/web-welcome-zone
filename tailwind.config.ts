@@ -55,10 +55,19 @@ export default {
 				},
 				// Custom colors
 				lisa: {
-					bg: '#0E0F1A',
-					cyan: '#1ECBE1',
-					violet: '#7540EE',
-					text: '#C7C9D3',
+					green: '#4BD48A',
+					teal: '#2ED9C3',
+					gray: {
+						100: '#F5F7FA',
+						200: '#E4E7EC', 
+						300: '#D0D5DD',
+						400: '#98A2B3',
+						500: '#667085',
+						600: '#475467',
+						700: '#344054',
+						800: '#1D2939',
+						900: '#101828'
+					}
 				}
 			},
 			borderRadius: {
@@ -81,10 +90,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': { 
-						boxShadow: '0 0 10px rgba(117, 64, 238, 0.1)' 
+						boxShadow: '0 0 10px rgba(75, 212, 138, 0.1)' 
 					},
 					'50%': { 
-						boxShadow: '0 0 20px rgba(117, 64, 238, 0.4)' 
+						boxShadow: '0 0 20px rgba(75, 212, 138, 0.3)' 
 					},
 				},
 				'text-reveal': {
@@ -115,7 +124,7 @@ export default {
 				'fade-in': 'fade-in 1s ease forwards',
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(90deg, #1ECBE1, #7540EE)',
+				'gradient-primary': 'linear-gradient(90deg, #4BD48A, #2ED9C3)',
 			},
 		}
 	},

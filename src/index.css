@@ -7,35 +7,35 @@
 
 @layer base {
   :root {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
-    --card: 240 10% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 240 10% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 187 80% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 142 69% 58%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 263 84% 57%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 6% 90%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 240 6% 90%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 187 80% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 142 69% 58%; 
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5% 15%;
-    --input: 240 5% 15%;
-    --ring: 187 80% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 47% 11%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
   }
 }
 
@@ -49,21 +49,21 @@
   }
 
   body {
-    @apply bg-lisa-bg text-lisa-text font-inter antialiased overflow-x-hidden;
+    @apply bg-white text-foreground font-inter antialiased overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sora text-white font-semibold tracking-tight;
+    @apply font-sora text-gray-900 font-semibold tracking-tight;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-sm;
   }
   
   .glass-card {
-    @apply glass rounded-2xl transition-all duration-300;
+    @apply glass rounded-xl transition-all duration-300;
   }
 
   .gradient-text {

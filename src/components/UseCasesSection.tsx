@@ -5,31 +5,31 @@ import { ArrowRight } from 'lucide-react';
 const useCases = [
   {
     id: 1,
-    title: "Supercharge Collections",
-    description: "Reduce aging by 35% with automated follow-ups, prioritized accounts, and predictive analytics.",
+    title: "Streamline Collections",
+    description: "Reduce aging by 35% through intelligent prioritization and automated follow-ups that get you paid faster.",
     icon: "💰",
-    gradient: "from-[#1ECBE1] to-[#18A8B9]"
+    gradient: "from-lisa-green to-lisa-green/70"
   },
   {
     id: 2,
-    title: "Boost Dispatch Efficiency",
-    description: "Optimize routes, reduce drive time, and increase jobs completed per day with AI-powered scheduling.",
+    title: "Optimize Dispatching",
+    description: "Smart scheduling and route optimization to reduce drive time and fit more jobs into each day.",
     icon: "🚚",
-    gradient: "from-[#7540EE] to-[#5A31B8]"
+    gradient: "from-lisa-teal to-lisa-teal/70"
   },
   {
     id: 3,
-    title: "Quote Faster",
-    description: "Turn estimates into revenue with AI-generated quotes, smart pricing recommendations, and faster approvals.",
+    title: "Accelerate Estimates",
+    description: "Generate professional quotes faster with smart pricing recommendations based on job history and current market.",
     icon: "📊",
-    gradient: "from-[#1ECBE1] to-[#7540EE]"
+    gradient: "from-lisa-green to-lisa-teal"
   },
   {
     id: 4,
-    title: "Streamline Back Office",
-    description: "Auto-replies, task summaries, and SOP suggestions keep your operations running smoothly.",
+    title: "Automate Office Work",
+    description: "Reduce paperwork through intelligent document processing, auto-replies, and task summarization.",
     icon: "📝",
-    gradient: "from-[#5A31B8] to-[#7540EE]"
+    gradient: "from-lisa-teal/80 to-lisa-green/80"
   }
 ];
 
@@ -57,14 +57,14 @@ const UseCasesSection = () => {
   }, []);
 
   return (
-    <section id="use-cases" ref={sectionRef} className="section-padding relative bg-gradient-to-b from-lisa-bg to-[#111224]">
+    <section id="use-cases" ref={sectionRef} className="section-padding relative">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 use-case-reveal opacity-0">
-            Real Business <span className="gradient-text">Impact</span>
+            Real <span className="text-lisa-green">Impact</span> For Your Business
           </h2>
-          <p className="text-lg text-lisa-text use-case-reveal opacity-0" style={{ animationDelay: '0.2s' }}>
-            See how LISA transforms different areas of your trades business with practical AI applications.
+          <p className="text-lg text-lisa-gray-600 use-case-reveal opacity-0" style={{ animationDelay: '0.2s' }}>
+            See how LISA transforms critical areas of your trades business with practical AI solutions.
           </p>
         </div>
         
@@ -72,24 +72,24 @@ const UseCasesSection = () => {
           {useCases.map((useCase, index) => (
             <div 
               key={useCase.id}
-              className="glass-card p-1 group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 use-case-reveal opacity-0"
+              className="bg-white rounded-xl shadow-sm border border-lisa-gray-200 group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 use-case-reveal opacity-0"
               style={{ animationDelay: `${0.3 + index * 0.15}s` }}
             >
-              <div className={`h-full rounded-2xl p-8 bg-gradient-to-br ${useCase.gradient} opacity-[0.02] group-hover:opacity-[0.05] transition-opacity`}>
+              <div className="p-8">
                 <div className="flex items-start gap-4">
-                  <div className="text-3xl glass rounded-xl h-16 w-16 flex items-center justify-center flex-shrink-0">
+                  <div className="text-3xl bg-lisa-gray-100 rounded-xl h-16 w-16 flex items-center justify-center flex-shrink-0">
                     {useCase.icon}
                   </div>
                   <div>
                     <h3 className="text-xl md:text-2xl font-semibold mb-3">
                       {useCase.title}
                     </h3>
-                    <p className="text-lisa-text mb-6">
+                    <p className="text-lisa-gray-600 mb-6">
                       {useCase.description}
                     </p>
                     <a 
                       href="#" 
-                      className="inline-flex items-center text-white gap-2 text-sm font-medium group/link"
+                      className="inline-flex items-center text-lisa-green gap-2 text-sm font-medium group/link"
                     >
                       Learn more 
                       <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
@@ -102,8 +102,8 @@ const UseCasesSection = () => {
         </div>
         
         <div className="text-center mt-16 use-case-reveal opacity-0" style={{ animationDelay: '0.7s' }}>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Each use case is tailored to your business size and specific industry challenges.
+          <p className="text-xl text-lisa-gray-700 max-w-2xl mx-auto">
+            Each solution is tailored to your specific business needs and industry challenges.
           </p>
         </div>
       </div>
