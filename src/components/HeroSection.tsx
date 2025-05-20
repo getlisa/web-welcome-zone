@@ -42,15 +42,59 @@ const HeroSection = () => {
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      {/* Animated background elements */}
+      {/* Hero background with tech-related imagery */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-lisa-blue/5 filter blur-3xl animate-pulse"></div>
+        <div className="absolute inset-0 bg-hero-pattern opacity-20"></div>
+        
+        {/* Neural network visualization */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-full h-full max-w-5xl mx-auto opacity-20">
+            <svg viewBox="0 0 800 600" className="w-full h-full">
+              <g className="nodes">
+                {Array.from({ length: 40 }).map((_, i) => (
+                  <circle 
+                    key={i}
+                    cx={200 + Math.random() * 400}
+                    cy={100 + Math.random() * 400}
+                    r={2 + Math.random() * 4}
+                    fill={Math.random() > 0.5 ? '#FF2C9C' : '#1ECBE1'}
+                    className="animate-pulse-glow"
+                    style={{ animationDelay: `${Math.random() * 5}s` }}
+                  />
+                ))}
+              </g>
+              <g className="connections">
+                {Array.from({ length: 60 }).map((_, i) => {
+                  const x1 = 200 + Math.random() * 400;
+                  const y1 = 100 + Math.random() * 400;
+                  const x2 = 200 + Math.random() * 400;
+                  const y2 = 100 + Math.random() * 400;
+                  return (
+                    <line 
+                      key={i}
+                      x1={x1}
+                      y1={y1}
+                      x2={x2}
+                      y2={y2}
+                      stroke={Math.random() > 0.5 ? '#FF2C9C' : '#1ECBE1'}
+                      strokeWidth="0.5"
+                      strokeOpacity="0.3"
+                    />
+                  );
+                })}
+              </g>
+            </svg>
+          </div>
+        </div>
+        
+        {/* Animated background elements */}
+        <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-lisa-pink/5 filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-lisa-purple/5 filter blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
       
       {/* Floating elements that follow the mouse */}
       <div 
-        className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-lisa-blue/10 to-transparent filter blur-xl"
+        className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-lisa-pink/10 to-transparent filter blur-xl"
         style={{ 
           left: `${mousePosition.x * 0.05}px`, 
           top: `${mousePosition.y * 0.05}px`,
@@ -58,8 +102,44 @@ const HeroSection = () => {
         }}
       ></div>
       
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMzMjM0NDIiIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzAgMzBoMzB2MzBIMzB6TTAgMGgzMHYzMEgweiIgZmlsbD0iIzFhMWIyNCIvPjwvZz48L3N2Zz4=')] opacity-5"></div>
+      {/* Virtual assistant vector image */}
+      <div className="absolute right-10 bottom-20 w-64 h-64 md:w-96 md:h-96 hidden lg:block">
+        <svg viewBox="0 0 100 100" className="w-full h-full animate-float">
+          {/* Abstract AI assistant representation */}
+          <circle cx="50" cy="50" r="20" fill="url(#assistantGradient)" className="opacity-80" />
+          <circle cx="50" cy="50" r="30" stroke="#FF2C9C" strokeWidth="0.5" fill="none" className="opacity-30" />
+          <circle cx="50" cy="50" r="40" stroke="#7540EE" strokeWidth="0.3" fill="none" className="opacity-20" />
+          
+          {/* Orbital elements */}
+          <g className="animate-orbit" style={{ transformOrigin: '50px 50px' }}>
+            <circle cx="90" cy="50" r="4" fill="#1ECBE1" className="opacity-80" />
+          </g>
+          <g className="animate-orbit" style={{ transformOrigin: '50px 50px', animationDelay: '0.5s', animationDuration: '8s' }}>
+            <circle cx="85" cy="50" r="3" fill="#FF2C9C" className="opacity-80" />
+          </g>
+          
+          {/* Sound wave visualization */}
+          <g transform="translate(20, 50)">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <path 
+                key={i}
+                d={`M0,0 C2.5,${-5 - i * 2} 5,${5 + i * 2} 10,0`} 
+                stroke="#1ECBE1"
+                strokeWidth="0.7"
+                fill="none"
+                className="opacity-70"
+              />
+            ))}
+          </g>
+          
+          <defs>
+            <radialGradient id="assistantGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%" stopColor="#7540EE" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#FF2C9C" stopOpacity="0.4" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
 
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto">
@@ -102,42 +182,10 @@ const HeroSection = () => {
             
             <Button 
               variant="outline" 
-              className="group flex items-center gap-2 text-white border border-white/20 hover:border-white/40 hover:bg-white/5 rounded-xl h-14 px-8 w-full sm:w-auto luxury-border"
+              className="btn-3d group flex items-center gap-2 text-white border border-white/20 hover:border-white/40 hover:bg-white/5 rounded-xl h-14 px-8 w-full sm:w-auto luxury-border"
             >
               <span>📅</span> Or Book a Live Demo
             </Button>
-          </div>
-        </div>
-      </div>
-      
-      {/* Split-screen animation preview */}
-      <div className="absolute bottom-0 left-0 right-0 h-64 flex items-center justify-center reveal-on-scroll opacity-0" style={{ animationDelay: '1.2s' }}>
-        <div className="glass-card p-4 w-full max-w-4xl flex gap-4 overflow-hidden">
-          <div className="w-1/2 glass-card p-3 flex-shrink-0">
-            <div className="h-6 flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 rounded-full bg-red-500"></div>
-              <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-              <div className="w-2 h-2 rounded-full bg-green-500"></div>
-              <div className="h-4 w-40 bg-white/10 rounded-md ml-auto"></div>
-            </div>
-            <div className="space-y-2">
-              <div className="h-4 bg-white/10 rounded-md w-3/4 shimmer-effect"></div>
-              <div className="h-4 bg-white/10 rounded-md shimmer-effect"></div>
-              <div className="h-4 bg-white/10 rounded-md w-5/6 shimmer-effect"></div>
-            </div>
-          </div>
-          <div className="w-1/2 glass-card p-3 flex-shrink-0">
-            <div className="h-6 flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 rounded-full bg-red-500"></div>
-              <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-              <div className="w-2 h-2 rounded-full bg-green-500"></div>
-              <div className="h-4 w-40 bg-white/10 rounded-md ml-auto"></div>
-            </div>
-            <div className="space-y-2">
-              <div className="h-4 bg-white/10 rounded-md w-2/3 shimmer-effect"></div>
-              <div className="h-4 bg-white/10 rounded-md w-1/2 shimmer-effect"></div>
-              <div className="h-4 bg-white/10 rounded-md w-4/5 shimmer-effect"></div>
-            </div>
           </div>
         </div>
       </div>

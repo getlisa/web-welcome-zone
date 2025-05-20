@@ -55,8 +55,8 @@ export default {
 				},
 				// Luxury AI theme colors
 				lisa: {
-					dark: '#0E0F1A',
-					darker: '#080914',
+					dark: '#2F0719',
+					darker: '#1F0512',
 					purple: '#7540EE',
 					blue: '#1ECBE1',
 					cyan: '#19E4D9',
@@ -94,10 +94,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': { 
-						boxShadow: '0 0 15px rgba(30, 203, 225, 0.3)' 
+						boxShadow: '0 0 25px rgba(117, 64, 238, 0.3)' 
 					},
 					'50%': { 
-						boxShadow: '0 0 30px rgba(30, 203, 225, 0.6)' 
+						boxShadow: '0 0 40px rgba(117, 64, 238, 0.6)' 
 					},
 				},
 				'text-reveal': {
@@ -130,6 +130,10 @@ export default {
 					'0%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' },
 					'100%': { backgroundPosition: '0% 50%' },
+				},
+				'orbit': {
+					'0%': { transform: 'rotate(0deg) translateX(120px) rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg) translateX(120px) rotate(-360deg)' }
 				}
 			},
 			animation: {
@@ -142,12 +146,14 @@ export default {
 				'button-press': 'button-press 0.3s ease-in-out',
 				'shimmer': 'shimmer 3s linear infinite',
 				'rotate-gradient': 'rotate-gradient 3s linear infinite',
+				'orbit': 'orbit 12s linear infinite',
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(90deg, #1ECBE1, #7540EE)',
+				'gradient-primary': 'linear-gradient(90deg, #FF2C9C, #7540EE)',
 				'gradient-luxury': 'linear-gradient(90deg, #19E4D9, #7540EE, #FF2C9C)',
-				'gradient-dark': 'radial-gradient(circle at 50% 50%, #1E293B, #0E0F1A)',
-				'gradient-card': 'linear-gradient(180deg, rgba(30, 203, 225, 0.08), rgba(117, 64, 238, 0.08))',
+				'gradient-dark': 'radial-gradient(circle at 50% 50%, #401022, #2F0719)',
+				'gradient-card': 'linear-gradient(180deg, rgba(255, 44, 156, 0.08), rgba(117, 64, 238, 0.08))',
+				'hero-pattern': 'url("data:image/svg+xml,%3Csvg width=\'30\' height=\'30\' viewBox=\'0 0 30 30\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z\' fill=\'rgba(255,255,255,0.07)\'/%3E%3C/svg%3E")',
 			},
 		}
 	},
