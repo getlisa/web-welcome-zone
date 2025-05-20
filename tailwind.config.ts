@@ -53,10 +53,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom colors
+				// Luxury AI theme colors
 				lisa: {
-					green: '#4BD48A',
-					teal: '#2ED9C3',
+					dark: '#0E0F1A',
+					darker: '#080914',
+					purple: '#7540EE',
+					blue: '#1ECBE1',
+					cyan: '#19E4D9',
+					pink: '#FF2C9C',
 					gray: {
 						100: '#F5F7FA',
 						200: '#E4E7EC', 
@@ -90,10 +94,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': { 
-						boxShadow: '0 0 10px rgba(75, 212, 138, 0.1)' 
+						boxShadow: '0 0 15px rgba(30, 203, 225, 0.3)' 
 					},
 					'50%': { 
-						boxShadow: '0 0 20px rgba(75, 212, 138, 0.3)' 
+						boxShadow: '0 0 30px rgba(30, 203, 225, 0.6)' 
 					},
 				},
 				'text-reveal': {
@@ -114,6 +118,19 @@ export default {
 						opacity: '1',
 					},
 				},
+				'button-press': {
+					'0%, 100%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(0.97)' },
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' },
+				},
+				'rotate-gradient': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' },
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -122,9 +139,15 @@ export default {
 				'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
 				'text-reveal': 'text-reveal 0.8s ease forwards',
 				'fade-in': 'fade-in 1s ease forwards',
+				'button-press': 'button-press 0.3s ease-in-out',
+				'shimmer': 'shimmer 3s linear infinite',
+				'rotate-gradient': 'rotate-gradient 3s linear infinite',
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(90deg, #4BD48A, #2ED9C3)',
+				'gradient-primary': 'linear-gradient(90deg, #1ECBE1, #7540EE)',
+				'gradient-luxury': 'linear-gradient(90deg, #19E4D9, #7540EE, #FF2C9C)',
+				'gradient-dark': 'radial-gradient(circle at 50% 50%, #1E293B, #0E0F1A)',
+				'gradient-card': 'linear-gradient(180deg, rgba(30, 203, 225, 0.08), rgba(117, 64, 238, 0.08))',
 			},
 		}
 	},

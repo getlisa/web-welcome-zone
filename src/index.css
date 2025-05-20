@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 230 15% 8%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 230 15% 10%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 230 15% 10%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 142 69% 58%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 190 80% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 6% 90%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 260 84% 60%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 6% 90%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 230 15% 15%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 142 69% 58%; 
-    --accent-foreground: 222 47% 11%;
+    --accent: 190 80% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
+    --border: 230 15% 18%;
+    --input: 230 15% 18%;
+    --ring: 230 84% 70%;
 
     --radius: 0.75rem;
   }
@@ -49,17 +49,17 @@
   }
 
   body {
-    @apply bg-white text-foreground font-inter antialiased overflow-x-hidden;
+    @apply bg-lisa-dark text-white font-inter antialiased overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sora text-gray-900 font-semibold tracking-tight;
+    @apply font-sora text-white font-semibold tracking-tight;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-sm;
+    @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-lg;
   }
   
   .glass-card {
@@ -67,7 +67,7 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-primary bg-clip-text text-transparent;
+    @apply bg-gradient-luxury bg-clip-text text-transparent;
   }
   
   .section-padding {
@@ -84,5 +84,27 @@
   
   .font-sora {
     font-family: 'Sora', sans-serif;
+  }
+
+  .btn-3d {
+    @apply relative overflow-hidden border-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] 
+    before:content-[''] before:absolute before:inset-0 before:bg-black/20 before:translate-y-[100%]
+    before:rounded-xl before:transition-transform before:duration-300
+    hover:before:translate-y-0 active:animate-button-press;
+  }
+
+  .luxury-card {
+    @apply relative bg-gradient-card rounded-xl border border-white/10 p-6 
+    shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-sm
+    hover:shadow-[0_15px_40px_rgba(30,203,225,0.15)] transition-all duration-500;
+  }
+
+  .luxury-border {
+    @apply relative before:absolute before:inset-0 before:rounded-xl
+    before:p-[1px] before:bg-gradient-luxury before:-z-10;
+  }
+
+  .shimmer-effect {
+    @apply bg-gradient-to-r from-transparent via-white/10 to-transparent bg-[length:200%_100%] animate-shimmer;
   }
 }
