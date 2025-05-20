@@ -53,26 +53,27 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Luxury AI theme colors
-				lisa: {
-					dark: '#2F0719',
-					darker: '#1F0512',
-					purple: '#7540EE',
-					blue: '#1ECBE1',
-					cyan: '#19E4D9',
-					pink: '#FF2C9C',
-					gray: {
-						100: '#F5F7FA',
-						200: '#E4E7EC', 
-						300: '#D0D5DD',
-						400: '#98A2B3',
-						500: '#667085',
-						600: '#475467',
-						700: '#344054',
-						800: '#1D2939',
-						900: '#101828'
-					}
-				}
+				// Custom color scheme
+				coolGray: {
+					DEFAULT: '#4A4A4A',
+					dark: '#3A3A3A',
+					light: '#6A6A6A',
+				},
+				deepWine: {
+					DEFAULT: '#3e0c29',
+					dark: '#2e0b1f',
+					light: '#4e1c39',
+				},
+				warmBlush: {
+					DEFAULT: '#f3d5e5',
+					dark: '#e3c5d5',
+					light: '#fff0fa',
+				},
+				trueBlack: '#0a0a0a',
+				pureWhite: '#ffffff',
+			},
+			fontFamily: {
+				'poppins': ['Poppins', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -94,10 +95,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': { 
-						boxShadow: '0 0 25px rgba(117, 64, 238, 0.3)' 
+						boxShadow: '0 0 25px rgba(243, 213, 229, 0.3)' 
 					},
 					'50%': { 
-						boxShadow: '0 0 40px rgba(117, 64, 238, 0.6)' 
+						boxShadow: '0 0 40px rgba(243, 213, 229, 0.6)' 
 					},
 				},
 				'text-reveal': {
@@ -149,10 +150,10 @@ export default {
 				'orbit': 'orbit 12s linear infinite',
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(90deg, #FF2C9C, #7540EE)',
-				'gradient-luxury': 'linear-gradient(90deg, #19E4D9, #7540EE, #FF2C9C)',
-				'gradient-dark': 'radial-gradient(circle at 50% 50%, #401022, #2F0719)',
-				'gradient-card': 'linear-gradient(180deg, rgba(255, 44, 156, 0.08), rgba(117, 64, 238, 0.08))',
+				'gradient-primary': 'linear-gradient(90deg, #3e0c29, #f3d5e5)',
+				'gradient-luxury': 'linear-gradient(90deg, #f3d5e5, #4A4A4A, #3e0c29)',
+				'gradient-dark': 'radial-gradient(circle at 50% 50%, #3e0c29, #0a0a0a)',
+				'gradient-card': 'linear-gradient(180deg, rgba(62, 12, 41, 0.08), rgba(243, 213, 229, 0.08))',
 				'hero-pattern': 'url("data:image/svg+xml,%3Csvg width=\'30\' height=\'30\' viewBox=\'0 0 30 30\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z\' fill=\'rgba(255,255,255,0.07)\'/%3E%3C/svg%3E")',
 			},
 		}

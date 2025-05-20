@@ -29,7 +29,7 @@ const DemoCtaSection = () => {
   return (
     <section ref={sectionRef} className="py-32 opacity-0 animate-on-scroll">
       <div className="container mx-auto px-4">
-        <div className="luxury-card bg-gradient-to-b from-lisa-dark to-lisa-darker max-w-4xl mx-auto">
+        <div className="luxury-card bg-gradient-to-b from-trueBlack to-deepWine/30 max-w-4xl mx-auto">
           <div className="glass-card backdrop-blur-lg border border-white/10">
             <div className="p-8 md:p-12 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-6">
@@ -37,7 +37,7 @@ const DemoCtaSection = () => {
               </h3>
               
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Button className="btn-3d bg-gradient-primary text-white hover:shadow-[0_0_20px_rgba(255,44,156,0.4)] rounded-xl h-14 px-8">
+                <Button className="btn-3d bg-gradient-primary text-white hover:shadow-[0_0_20px_rgba(243,213,229,0.4)] rounded-xl h-14 px-8">
                   <span className="mr-2">🧠</span> Book a Demo
                 </Button>
                 

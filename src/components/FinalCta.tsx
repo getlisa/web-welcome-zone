@@ -30,8 +30,8 @@ const FinalCta = () => {
     <section ref={sectionRef} className="py-32 relative opacity-0 animate-on-scroll">
       {/* Background glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 aspect-square rounded-full bg-lisa-pink/10 filter blur-[100px]"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 aspect-square rounded-full bg-lisa-purple/10 filter blur-[80px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 aspect-square rounded-full bg-deepWine/10 filter blur-[100px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 aspect-square rounded-full bg-warmBlush/10 filter blur-[80px]"></div>
       </div>
       
       {/* Vector animation */}
@@ -42,7 +42,7 @@ const FinalCta = () => {
               <path 
                 key={i}
                 d={`M${100 + i * 60},100 C${150 + i * 60},${200 + i * 20} ${200 + i * 60},${220 - i * 15} ${250 + i * 60},300 S${350 + i * 60},${400 + i % 3 * 50} ${400 + i * 60},500`} 
-                stroke={i % 2 === 0 ? "#FF2C9C" : "#1ECBE1"} 
+                stroke={i % 2 === 0 ? "#3e0c29" : "#f3d5e5"} 
                 strokeWidth="1"
                 fill="none"
                 className="opacity-50"
@@ -58,7 +58,7 @@ const FinalCta = () => {
                 cx={100 + Math.random() * 600}
                 cy={100 + Math.random() * 400}
                 r={2 + Math.random() * 4}
-                fill={i % 2 === 0 ? "#FF2C9C" : "#1ECBE1"}
+                fill={i % 2 === 0 ? "#3e0c29" : "#f3d5e5"}
                 className="opacity-40"
               />
             ))}
@@ -77,7 +77,7 @@ const FinalCta = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button className="btn-3d relative bg-gradient-primary text-white hover:shadow-[0_0_30px_rgba(255,44,156,0.4)] text-lg py-7 px-8 rounded-xl overflow-hidden group">
+            <Button className="btn-3d relative bg-gradient-primary text-white hover:shadow-[0_0_30px_rgba(243,213,229,0.4)] text-lg py-7 px-8 rounded-xl overflow-hidden group">
               <span className="relative z-10 flex items-center gap-2">
                 <span>▶️</span> 
                 Try Your First Agent Free
@@ -108,8 +108,8 @@ const FinalCta = () => {
                 <path d="M25,15 L25,12 M25,38 L25,35 M15,25 L12,25 M38,25 L35,25" stroke="white" strokeWidth="1" strokeLinecap="round" />
                 <defs>
                   <linearGradient id="aiAssistantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#FF2C9C" />
-                    <stop offset="100%" stopColor="#7540EE" />
+                    <stop offset="0%" stopColor="#3e0c29" />
+                    <stop offset="100%" stopColor="#f3d5e5" />
                   </linearGradient>
                 </defs>
               </svg>

@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 334 81% 7%;
+    --background: 0 0% 6%;
     --foreground: 0 0% 100%;
 
-    --card: 334 81% 10%;
+    --card: 0 0% 9%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 334 81% 10%;
+    --popover: 0 0% 9%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 190 80% 50%;
+    --primary: 326 56% 14%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 310 100% 56%;
+    --secondary: 328 56% 14%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 334 81% 15%;
+    --muted: 0 0% 15%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 190 80% 50%;
+    --accent: 326 56% 14%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 334 81% 18%;
-    --input: 334 81% 18%;
-    --ring: 334 81% 70%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 326 56% 70%;
 
     --radius: 0.75rem;
   }
@@ -49,11 +49,11 @@
   }
 
   body {
-    @apply bg-lisa-dark text-white font-inter antialiased overflow-x-hidden;
+    @apply bg-trueBlack text-white font-poppins antialiased overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sora text-white font-semibold tracking-tight;
+    @apply font-poppins text-white font-semibold tracking-tight;
   }
 }
 
@@ -77,14 +77,6 @@
   .sticky-section {
     @apply min-h-screen flex items-center;
   }
-  
-  .font-inter {
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .font-sora {
-    font-family: 'Sora', sans-serif;
-  }
 
   .btn-3d {
     @apply relative overflow-hidden border-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] 
@@ -96,7 +88,7 @@
   .luxury-card {
     @apply relative bg-gradient-card rounded-xl border border-white/10 p-6 
     shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur-sm
-    hover:shadow-[0_15px_40px_rgba(255,44,156,0.15)] transition-all duration-500;
+    hover:shadow-[0_15px_40px_rgba(243,213,229,0.15)] transition-all duration-500;
   }
 
   .luxury-border {

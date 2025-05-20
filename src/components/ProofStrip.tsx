@@ -46,7 +46,7 @@ const ProofStrip = () => {
               key={company.name} 
               className="relative group flex flex-col items-center"
             >
-              <div className="text-lg font-sora gradient-text font-semibold">{company.name}</div>
+              <div className="text-lg font-poppins gradient-text font-semibold">{company.name}</div>
               
               {/* Hover detail */}
               <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-48 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 glass rounded-lg p-2 text-center text-sm text-white">

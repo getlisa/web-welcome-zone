@@ -28,8 +28,8 @@ const ExplainerSection = () => {
   return (
     <section ref={sectionRef} className="section-padding relative opacity-0 animate-on-scroll">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-lisa-purple/5 filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full bg-lisa-blue/5 filter blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-deepWine/10 filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full bg-warmBlush/10 filter blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
       <div className="container mx-auto px-4">
@@ -52,13 +52,13 @@ const ExplainerSection = () => {
                 
                 {/* Brain visualization */}
                 <svg viewBox="0 0 60 40" className="w-16 h-16 mx-auto mt-2 opacity-70">
-                  <path d="M30,5 C40,5 50,15 50,25 C50,35 40,45 30,45 C20,45 10,35 10,25 C10,15 20,5 30,5 Z" stroke="#FF2C9C" strokeWidth="0.5" fill="none" />
-                  <path d="M30,10 C37.5,10 45,17.5 45,25 C45,32.5 37.5,40 30,40 C22.5,40 15,32.5 15,25 C15,17.5 22.5,10 30,10 Z" stroke="#1ECBE1" strokeWidth="0.5" fill="none" />
-                  <path d="M20,15 C20,15 25,25 30,25 C35,25 40,15 40,15" stroke="#1ECBE1" strokeWidth="0.5" fill="none" />
-                  <path d="M20,35 C20,35 25,25 30,25 C35,25 40,35 40,35" stroke="#FF2C9C" strokeWidth="0.5" fill="none" />
+                  <path d="M30,5 C40,5 50,15 50,25 C50,35 40,45 30,45 C20,45 10,35 10,25 C10,15 20,5 30,5 Z" stroke="#f3d5e5" strokeWidth="0.5" fill="none" />
+                  <path d="M30,10 C37.5,10 45,17.5 45,25 C45,32.5 37.5,40 30,40 C22.5,40 15,32.5 15,25 C15,17.5 22.5,10 30,10 Z" stroke="#4A4A4A" strokeWidth="0.5" fill="none" />
+                  <path d="M20,15 C20,15 25,25 30,25 C35,25 40,15 40,15" stroke="#4A4A4A" strokeWidth="0.5" fill="none" />
+                  <path d="M20,35 C20,35 25,25 30,25 C35,25 40,35 40,35" stroke="#f3d5e5" strokeWidth="0.5" fill="none" />
                   <path d="M28,25 L32,25" stroke="#FFFFFF" strokeWidth="0.5" />
-                  <circle cx="25" cy="20" r="1" fill="#1ECBE1" />
-                  <circle cx="35" cy="20" r="1" fill="#1ECBE1" />
+                  <circle cx="25" cy="20" r="1" fill="#4A4A4A" />
+                  <circle cx="35" cy="20" r="1" fill="#4A4A4A" />
                   <circle cx="30" cy="25" r="2.5" fill="#FFFFFF" />
                 </svg>
               </div>
@@ -78,8 +78,8 @@ const ExplainerSection = () => {
                     <path d="M14,14 L18,12 C19,11.5 20,12 20.5,13 L21.5,15 C21.75,15.75 21.5,16.5 21,17 L19.5,18.5 C20,20 21.5,22 23.5,23 L24.75,21.75 C25.25,21.25 26,21 26.75,21.25 L28.75,22.25 C29.75,22.75 30,23.75 29.5,24.75 L27.5,28.5 C27,29.5 25.75,30 24.5,29.5 C19,28 14.5,23.5 13,18 C12.5,16.75 13,15.5 14,15 L14,14 Z" fill="white" />
                     <defs>
                       <linearGradient id="callAgent" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#1ECBE1" />
-                        <stop offset="100%" stopColor="#7540EE" />
+                        <stop offset="0%" stopColor="#f3d5e5" />
+                        <stop offset="100%" stopColor="#3e0c29" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -98,8 +98,8 @@ const ExplainerSection = () => {
                     <path d="M18,16 L22,16 M18,18 L22,18 M18,20 L20,20" stroke="white" strokeLinecap="round" strokeWidth="1" />
                     <defs>
                       <linearGradient id="researchAgent" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#7540EE" />
-                        <stop offset="100%" stopColor="#FF2C9C" />
+                        <stop offset="0%" stopColor="#4A4A4A" />
+                        <stop offset="100%" stopColor="#3e0c29" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -117,8 +117,8 @@ const ExplainerSection = () => {
                     <path d="M16,17 L24,17 M16,20 L24,20 M16,23 L21,23" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
                     <defs>
                       <linearGradient id="invoiceAgent" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#19E4D9" />
-                        <stop offset="100%" stopColor="#1ECBE1" />
+                        <stop offset="0%" stopColor="#f3d5e5" />
+                        <stop offset="100%" stopColor="#4A4A4A" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -140,8 +140,8 @@ const ExplainerSection = () => {
                     <circle cx="23" cy="20" r="1" fill="white" />
                     <defs>
                       <linearGradient id="calendarAgent" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FF2C9C" />
-                        <stop offset="100%" stopColor="#7540EE" />
+                        <stop offset="0%" stopColor="#3e0c29" />
+                        <stop offset="100%" stopColor="#4A4A4A" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -160,8 +160,8 @@ const ExplainerSection = () => {
                     <path d="M12,14 L20,21 L28,14" stroke="white" strokeWidth="1.5" fill="none" />
                     <defs>
                       <linearGradient id="emailAgent" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#1ECBE1" />
-                        <stop offset="100%" stopColor="#19E4D9" />
+                        <stop offset="0%" stopColor="#f3d5e5" />
+                        <stop offset="100%" stopColor="#f3d5e5" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -179,8 +179,8 @@ const ExplainerSection = () => {
                     <path d="M16,16 L24,16 M16,19 L20,19" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
                     <defs>
                       <linearGradient id="chatAgent" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FF2C9C" />
-                        <stop offset="100%" stopColor="#1ECBE1" />
+                        <stop offset="0%" stopColor="#3e0c29" />
+                        <stop offset="100%" stopColor="#f3d5e5" />
                       </linearGradient>
                     </defs>
                   </svg>

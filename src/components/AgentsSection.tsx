@@ -14,15 +14,15 @@ const agents = [
         <path d="M28,28 L36,24 C38,23 40,24 41,26 L43,30 C43.5,31.5 43,33 42,34 L39,37 C40,40 43,44 47,46 L49.5,43.5 C50.5,42.5 52,42 53.5,42.5 L57.5,44.5 C59.5,45.5 60,47.5 59,49.5 L55,57 C54,59 51.5,60 49,59 C38,56 29,47 26,36 C25,33.5 26,31 28,30 L28,28 Z" fill="white" />
         <defs>
           <linearGradient id="callingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#1ECBE1" />
-            <stop offset="100%" stopColor="#7540EE" />
+            <stop offset="0%" stopColor="#f3d5e5" />
+            <stop offset="100%" stopColor="#3e0c29" />
           </linearGradient>
         </defs>
       </svg>
     ),
     title: 'AI Calling',
     description: 'LISA answers all your calls, engages prospects, and never misses a lead. Always on, always professional.',
-    color: 'from-lisa-blue to-lisa-cyan',
+    color: 'from-warmBlush to-deepWine',
     delay: 0
   },
   {
@@ -38,15 +38,15 @@ const agents = [
         <circle cx="45" cy="40" r="2" fill="white" />
         <defs>
           <linearGradient id="schedulingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7540EE" />
-            <stop offset="100%" stopColor="#1ECBE1" />
+            <stop offset="0%" stopColor="#4A4A4A" />
+            <stop offset="100%" stopColor="#f3d5e5" />
           </linearGradient>
         </defs>
       </svg>
     ),
     title: 'Smart Scheduling',
     description: 'Optimize technician routes and appointment slots to maximize productivity and minimize downtime.',
-    color: 'from-lisa-purple to-lisa-blue',
+    color: 'from-coolGray to-warmBlush',
     delay: 0.1
   },
   {
@@ -61,15 +61,15 @@ const agents = [
         <path d="M45,46 L49,50 L45,54" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none" />
         <defs>
           <linearGradient id="invoiceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#19E4D9" />
-            <stop offset="100%" stopColor="#1ECBE1" />
+            <stop offset="0%" stopColor="#f3d5e5" />
+            <stop offset="100%" stopColor="#4A4A4A" />
           </linearGradient>
         </defs>
       </svg>
     ),
     title: 'Invoice Management',
     description: 'Automate invoice follow-ups and payment tracking — get paid faster with less hassle.',
-    color: 'from-lisa-cyan to-lisa-blue',
+    color: 'from-warmBlush to-coolGray',
     delay: 0.2
   },
   {
@@ -86,15 +86,15 @@ const agents = [
         <circle cx="45" cy="31" r="3" fill="white" />
         <defs>
           <linearGradient id="fieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FF2C9C" />
-            <stop offset="100%" stopColor="#7540EE" />
+            <stop offset="0%" stopColor="#3e0c29" />
+            <stop offset="100%" stopColor="#4A4A4A" />
           </linearGradient>
         </defs>
       </svg>
     ),
     title: 'Field Operations',
     description: 'Real-time job tracking and technician coordination keep your projects on time and on budget.',
-    color: 'from-lisa-pink to-lisa-purple',
+    color: 'from-deepWine to-coolGray',
     delay: 0.3
   },
   {
@@ -111,15 +111,15 @@ const agents = [
         <circle cx="47" cy="25" r="2" fill="white" />
         <defs>
           <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7540EE" />
-            <stop offset="100%" stopColor="#FF2C9C" />
+            <stop offset="0%" stopColor="#4A4A4A" />
+            <stop offset="100%" stopColor="#3e0c29" />
           </linearGradient>
         </defs>
       </svg>
     ),
     title: 'Data Analytics',
     description: 'Actionable insights and reports give you a clear view of your business health and growth opportunities.',
-    color: 'from-lisa-purple to-lisa-pink',
+    color: 'from-coolGray to-deepWine',
     delay: 0.4
   },
   {
@@ -138,15 +138,15 @@ const agents = [
         <circle cx="40" cy="60" r="3" fill="white" />
         <defs>
           <linearGradient id="integrationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#1ECBE1" />
-            <stop offset="100%" stopColor="#7540EE" />
+            <stop offset="0%" stopColor="#f3d5e5" />
+            <stop offset="100%" stopColor="#4A4A4A" />
           </linearGradient>
         </defs>
       </svg>
     ),
     title: 'AI Integration',
     description: 'Seamlessly connect LISA with your existing tools, CRMs, and software for smooth, end-to-end workflows.',
-    color: 'from-lisa-blue to-lisa-purple',
+    color: 'from-warmBlush to-coolGray',
     delay: 0.5
   }
 ];
@@ -179,7 +179,7 @@ const AgentsSection = () => {
   return (
     <section id="agents" ref={sectionRef} className="section-padding relative opacity-0 animate-on-scroll">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/3 w-96 h-96 rounded-full bg-lisa-purple/5 filter blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/3 left-1/3 w-96 h-96 rounded-full bg-deepWine/10 filter blur-3xl animate-pulse"></div>
       </div>
 
       <div className="container mx-auto px-4 relative">
@@ -213,7 +213,7 @@ const AgentsSection = () => {
                     {agent.description}
                   </p>
                   
-                  <Button className="btn-3d bg-gradient-to-r from-lisa-pink to-lisa-purple text-white w-full">
+                  <Button className="btn-3d bg-gradient-to-r from-deepWine to-warmBlush text-white w-full">
                     Try Now
                   </Button>
                 </CardContent>
