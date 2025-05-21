@@ -29,6 +29,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <a href="#" className="flex items-center mb-4 md:mb-0 md:mr-auto">
+            <img 
+              src="/placeholder.svg" 
+              alt="LISA Logo" 
+              className="h-8 mr-2"
+            />
             <span className="text-xl md:text-2xl font-semibold gradient-text">LISA</span>
           </a>
 
