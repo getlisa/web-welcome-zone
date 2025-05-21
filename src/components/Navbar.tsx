@@ -30,11 +30,11 @@ const Navbar = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <a href="#" className="flex items-center mb-4 md:mb-0 md:mr-auto">
             <img 
-              src="/placeholder.svg" 
+              src="https://zentrades.pro/wp-content/uploads/2025/05/Lisa-300-x-300-px.jpg" 
               alt="LISA Logo" 
               className="h-8 mr-2"
             />
-            <span className="text-xl md:text-2xl font-semibold gradient-text">LISA</span>
+           
           </a>
 
           {/* Desktop navigation */}
