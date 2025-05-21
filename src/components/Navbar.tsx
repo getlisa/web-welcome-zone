@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <a href="#" className="flex items-center mb-4 md:mb-0 md:mr-auto">
             <img 
-              src="https://zentrades.pro/wp-content/uploads/2025/05/Lisa-300-x-300-px.jpg" 
+              src="https://zentrades.pro/wp-content/uploads/2025/05/Untitled-100-x-100-px.png" 
               alt="LISA Logo" 
               className="h-8 mr-2"
             />
