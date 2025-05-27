@@ -60,9 +60,9 @@ export default {
 					light: '#6A6A6A',
 				},
 				deepWine: {
-					DEFAULT: '#3e0c29',
-					dark: '#2e0b1f',
-					light: '#4e1c39',
+					DEFAULT: '#ca4f98',
+					dark: '#ca4f98',
+					light: '#ca4f98',
 				},
 				warmBlush: {
 					DEFAULT: '#f3d5e5',
