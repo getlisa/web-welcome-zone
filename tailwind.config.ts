@@ -55,9 +55,9 @@ export default {
 				},
 				// Custom color scheme
 				coolGray: {
-					DEFAULT: '#4A4A4A',
-					dark: '#3A3A3A',
-					light: '#6A6A6A',
+					DEFAULT: '#ca4f98',
+					dark: '#ca4f98',
+					light: '#ca4f98',
 				},
 				deepWine: {
 					DEFAULT: '#ca4f98',
@@ -65,9 +65,9 @@ export default {
 					light: '#ca4f98',
 				},
 				warmBlush: {
-					DEFAULT: '#f3d5e5',
-					dark: '#e3c5d5',
-					light: '#fff0fa',
+					DEFAULT: '#ca4f98',
+					dark: '#ca4f98',
+					light: '#ca4f98',
 				},
 				trueBlack: '#0a0a0a',
 				pureWhite: '#ffffff',
