@@ -150,9 +150,9 @@ export default {
 				'orbit': 'orbit 12s linear infinite',
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(90deg, #3e0c29, #f3d5e5)',
-				'gradient-luxury': 'linear-gradient(90deg, #f3d5e5, #4A4A4A, #3e0c29)',
-				'gradient-dark': 'radial-gradient(circle at 50% 50%, #3e0c29, #0a0a0a)',
+				'gradient-primary': 'linear-gradient(90deg, #ca4f98, #ca4f98)',
+				'gradient-luxury': 'linear-gradient(90deg, #ca4f98, #ca4f98, #ca4f98)',
+				'gradient-dark': 'radial-gradient(circle at 50% 50%, #ca4f98, #ca4f98)',
 				'gradient-card': 'linear-gradient(180deg, rgba(62, 12, 41, 0.08), rgba(243, 213, 229, 0.08))',
 				'hero-pattern': 'url("data:image/svg+xml,%3Csvg width=\'30\' height=\'30\' viewBox=\'0 0 30 30\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z\' fill=\'rgba(255,255,255,0.07)\'/%3E%3C/svg%3E")',
 			},
