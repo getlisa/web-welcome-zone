@@ -1,24 +1,35 @@
+
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 const FooterSection = () => {
   useEffect(() => {
-    // Initialize HubSpot form for footer
-    if (window.hbspt) {
-      const targetElement = document.getElementById("footer-hubspot-form");
-      if (targetElement) {
-        window.hbspt.forms.create({
-          portalId: "45865556",
-          formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
-          region: "na1",
-          target: targetElement
-        });
+    // Initialize HubSpot form for footer with a delay to ensure DOM is ready
+    const initFooterForm = () => {
+      if (window.hbspt) {
+        const targetElement = document.getElementById("footer-hubspot-form");
+        if (targetElement && targetElement.children.length === 0) {
+          window.hbspt.forms.create({
+            portalId: "45865556",
+            formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
+            region: "na1",
+            target: "#footer-hubspot-form"
+          });
+        }
       }
-    }
+    };
+
+    // Try to initialize immediately
+    initFooterForm();
+
+    // Also try after a short delay in case the script is still loading
+    const timer = setTimeout(initFooterForm, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <footer className="bg-lisa-darker pt-20 pb-8 border-t border-white/10">
+    <footer className="bg-lisa-darker pt-20 pb-8 border-t border-white/10 relative z-10">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-10 pb-16 border-b border-white/10">
           <div>
@@ -67,7 +78,11 @@ const FooterSection = () => {
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Stay Updated</h3>
             <p className="text-white/70 mb-4">Get the latest AI trends for business operations.</p>
-            <div id="footer-hubspot-form" className="glass rounded-lg p-1"></div>
+            <div 
+              id="footer-hubspot-form" 
+              className="min-h-[120px] rounded-lg"
+              style={{ position: 'relative', zIndex: 1 }}
+            ></div>
           </div>
         </div>
         

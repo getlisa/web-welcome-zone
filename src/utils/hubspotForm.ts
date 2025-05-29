@@ -12,13 +12,14 @@ export const openHubSpotForm = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 99999;
     backdrop-filter: blur(5px);
   `;
 
   // Create modal content
   const modal = document.createElement('div');
   modal.style.cssText = `
+    background: white;
     border-radius: 12px;
     padding: 20px;
     max-width: 900px;
@@ -26,6 +27,7 @@ export const openHubSpotForm = () => {
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
+    z-index: 100000;
   `;
 
   // Create close button
@@ -40,7 +42,7 @@ export const openHubSpotForm = () => {
     font-size: 24px;
     cursor: pointer;
     color: #666;
-    z-index: 10000;
+    z-index: 100001;
   `;
 
   // Create HubSpot form container
@@ -99,13 +101,14 @@ export const openAgentForm = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 99999;
     backdrop-filter: blur(5px);
   `;
 
   // Create modal content
   const modal = document.createElement('div');
   modal.style.cssText = `
+    background: white;
     border-radius: 12px;
     padding: 20px;
     max-width: 900px;
@@ -113,6 +116,7 @@ export const openAgentForm = () => {
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
+    z-index: 100000;
   `;
 
   // Create close button
@@ -127,7 +131,7 @@ export const openAgentForm = () => {
     font-size: 24px;
     cursor: pointer;
     color: #666;
-    z-index: 10000;
+    z-index: 100001;
   `;
 
   // Create HubSpot form container
