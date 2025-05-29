@@ -17,7 +17,7 @@ const FooterSection = () => {
             onFormReady: () => {
               console.log('Footer HubSpot form ready');
               // Ensure the form stays within its container
-              const form = targetElement.querySelector('.hs-form');
+              const form = targetElement.querySelector('.hs-form') as HTMLElement;
               if (form) {
                 form.style.cssText = `
                   max-width: 100%;
