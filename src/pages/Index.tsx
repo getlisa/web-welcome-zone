@@ -11,6 +11,8 @@ import CalculatorSection from "../components/CalculatorSection";
 import WhyLisaSection from "../components/WhyLisaSection";
 import FinalCta from "../components/FinalCta";
 import FooterSection from "../components/FooterSection";
+import UseCasesSection from "../components/UseCasesSection";
+import TailoredSection from "../components/TailoredSection";
 
 const Index = () => {
   useEffect(() => {
@@ -58,10 +60,12 @@ const Index = () => {
       <HeroSection />
       <ProofStrip />
       <ExplainerSection />
+      <UseCasesSection />
       <AgentsSection />
       <TestimonialSection />
       <DemoCtaSection />
       <CalculatorSection />
+      <TailoredSection />
       <WhyLisaSection />
       <FinalCta />
       <FooterSection />
