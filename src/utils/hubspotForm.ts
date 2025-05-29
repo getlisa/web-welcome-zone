@@ -1,5 +1,35 @@
 
 export const openHubSpotForm = () => {
+  // Enhanced cleanup function that's more targeted
+  const cleanupOrphanedElements = () => {
+    console.log('Cleaning up orphaned HubSpot elements...');
+    
+    // Remove any existing modal overlays first
+    const existingModal = document.getElementById('hubspot-modal-overlay');
+    if (existingModal) {
+      existingModal.remove();
+    }
+    
+    // Only clean up orphaned elements that are not part of footer or existing modals
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach(child => {
+      if (child.id !== 'root' && 
+          child.id !== 'hubspot-modal-overlay' &&
+          child.id !== 'agent-modal-overlay' &&
+          !child.closest('#root') &&
+          !child.closest('#footer-hubspot-form') &&
+          (child.innerHTML?.includes('hsfc-') || 
+           child.innerHTML?.includes('hs-form') ||
+           child.classList?.contains('hs-form'))) {
+        console.log('Removing orphaned HubSpot element:', child);
+        child.remove();
+      }
+    });
+  };
+
+  // Clean up any existing elements first
+  cleanupOrphanedElements();
+
   // Create modal overlay
   const overlay = document.createElement('div');
   overlay.id = 'hubspot-modal-overlay';
@@ -50,60 +80,21 @@ export const openHubSpotForm = () => {
   // Create HubSpot form container
   const formContainer = document.createElement('div');
   formContainer.id = 'modal-hubspot-form-container';
-  formContainer.className = 'hs-form-frame';
 
-  // Enhanced cleanup function
+  // Enhanced modal close function
   const closeModal = () => {
-    console.log('Cleaning up HubSpot modal...');
+    console.log('Closing HubSpot modal...');
     
-    // Remove all HubSpot form related elements from the entire document
-    const hsFormSelectors = [
-      '.hs-form',
-      '.hs-form-iframe', 
-      '.submitted-message',
-      '.hsfc-Step__Content',
-      '.hsfc-Row',
-      '.hsfc-TextField',
-      '.hsfc-EmailField',
-      '.hsfc-PhoneField',
-      '.hsfc-ProgressBar',
-      '.hsfc-NavigationRow',
-      '.hsfc-Button',
-      '[class*="hsfc-"]',
-      '[data-hsfc-id]'
-    ];
-    
-    hsFormSelectors.forEach(selector => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach(element => {
-        // Only remove if it's not part of the footer form
-        if (!element.closest('#footer-hubspot-form')) {
-          element.remove();
-        }
-      });
-    });
-    
-    // Remove the modal overlay specifically
+    // Remove the modal overlay
     const modalOverlay = document.getElementById('hubspot-modal-overlay');
     if (modalOverlay) {
       modalOverlay.remove();
     }
     
-    // Clean up any orphaned elements at the end of body
-    const bodyChildren = Array.from(document.body.children);
-    bodyChildren.forEach(child => {
-      // Remove any elements that contain HubSpot form content but are not our main app or modal
-      if (child.id !== 'root' && 
-          child.id !== 'hubspot-modal-overlay' && 
-          !child.closest('#root') &&
-          (child.innerHTML?.includes('hsfc-') || 
-           child.innerHTML?.includes('First Name') ||
-           child.innerHTML?.includes('Last Name') ||
-           child.innerHTML?.includes('Email'))) {
-        console.log('Removing orphaned HubSpot element:', child);
-        child.remove();
-      }
-    });
+    // Clean up any orphaned HubSpot elements, but preserve footer form
+    setTimeout(() => {
+      cleanupOrphanedElements();
+    }, 100);
     
     document.body.style.overflow = 'auto';
   };
@@ -127,26 +118,84 @@ export const openHubSpotForm = () => {
   // Add to DOM
   document.body.appendChild(overlay);
 
-  // Initialize HubSpot form if the script is loaded
-  if (window.hbspt) {
-    window.hbspt.forms.create({
-      region: 'na1',
-      portalId: '45865556',
-      formId: 'c3428dcb-b18c-4277-b463-b7869c42800f',
-      target: formContainer,
-      onFormReady: () => {
-        console.log('HubSpot modal form ready');
-      },
-      onFormSubmitted: () => {
-        console.log('HubSpot modal form submitted');
-        // Close modal after successful submission
-        setTimeout(closeModal, 2000);
+  // Initialize HubSpot form with better error handling and timing
+  const initializeForm = () => {
+    if (window.hbspt && window.hbspt.forms) {
+      console.log('Initializing HubSpot form in modal...');
+      
+      try {
+        window.hbspt.forms.create({
+          region: 'na1',
+          portalId: '45865556',
+          formId: 'c3428dcb-b18c-4277-b463-b7869c42800f',
+          target: formContainer,
+          onFormReady: () => {
+            console.log('HubSpot modal form ready');
+            // Ensure proper styling
+            const form = formContainer.querySelector('.hs-form') as HTMLElement;
+            if (form) {
+              form.style.cssText = `
+                max-width: 100%;
+                overflow: visible;
+                position: relative;
+                z-index: 1;
+              `;
+            }
+          },
+          onFormSubmitted: () => {
+            console.log('HubSpot modal form submitted');
+            setTimeout(closeModal, 2000);
+          },
+          onFormDefinitionFetchError: (error: any) => {
+            console.error('HubSpot form fetch error:', error);
+          }
+        });
+      } catch (error) {
+        console.error('Error creating HubSpot form:', error);
+        // Show fallback message
+        formContainer.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load form. Please try again later.</p>';
       }
-    });
-  }
+    } else {
+      console.log('HubSpot script not ready, retrying...');
+      setTimeout(initializeForm, 500);
+    }
+  };
+
+  // Try to initialize form after a short delay to ensure modal is rendered
+  setTimeout(initializeForm, 100);
 };
 
 export const openAgentForm = () => {
+  // Enhanced cleanup function that's more targeted
+  const cleanupOrphanedElements = () => {
+    console.log('Cleaning up orphaned Agent HubSpot elements...');
+    
+    // Remove any existing modal overlays first
+    const existingModal = document.getElementById('agent-modal-overlay');
+    if (existingModal) {
+      existingModal.remove();
+    }
+    
+    // Only clean up orphaned elements that are not part of footer or existing modals
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach(child => {
+      if (child.id !== 'root' && 
+          child.id !== 'hubspot-modal-overlay' &&
+          child.id !== 'agent-modal-overlay' &&
+          !child.closest('#root') &&
+          !child.closest('#footer-hubspot-form') &&
+          (child.innerHTML?.includes('hsfc-') || 
+           child.innerHTML?.includes('hs-form') ||
+           child.classList?.contains('hs-form'))) {
+        console.log('Removing orphaned Agent HubSpot element:', child);
+        child.remove();
+      }
+    });
+  };
+
+  // Clean up any existing elements first
+  cleanupOrphanedElements();
+
   // Create modal overlay
   const overlay = document.createElement('div');
   overlay.id = 'agent-modal-overlay';
@@ -197,60 +246,21 @@ export const openAgentForm = () => {
   // Create HubSpot form container
   const formContainer = document.createElement('div');
   formContainer.id = 'agent-hubspot-form-container';
-  formContainer.className = 'hs-form-frame';
 
-  // Enhanced cleanup function
+  // Enhanced modal close function
   const closeModal = () => {
-    console.log('Cleaning up Agent HubSpot modal...');
+    console.log('Closing Agent HubSpot modal...');
     
-    // Remove all HubSpot form related elements from the entire document
-    const hsFormSelectors = [
-      '.hs-form',
-      '.hs-form-iframe', 
-      '.submitted-message',
-      '.hsfc-Step__Content',
-      '.hsfc-Row',
-      '.hsfc-TextField',
-      '.hsfc-EmailField',
-      '.hsfc-PhoneField',
-      '.hsfc-ProgressBar',
-      '.hsfc-NavigationRow',
-      '.hsfc-Button',
-      '[class*="hsfc-"]',
-      '[data-hsfc-id]'
-    ];
-    
-    hsFormSelectors.forEach(selector => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach(element => {
-        // Only remove if it's not part of the footer form
-        if (!element.closest('#footer-hubspot-form')) {
-          element.remove();
-        }
-      });
-    });
-    
-    // Remove the modal overlay specifically
+    // Remove the modal overlay
     const modalOverlay = document.getElementById('agent-modal-overlay');
     if (modalOverlay) {
       modalOverlay.remove();
     }
     
-    // Clean up any orphaned elements at the end of body
-    const bodyChildren = Array.from(document.body.children);
-    bodyChildren.forEach(child => {
-      // Remove any elements that contain HubSpot form content but are not our main app or modal
-      if (child.id !== 'root' && 
-          child.id !== 'agent-modal-overlay' && 
-          !child.closest('#root') &&
-          (child.innerHTML?.includes('hsfc-') || 
-           child.innerHTML?.includes('First Name') ||
-           child.innerHTML?.includes('Last Name') ||
-           child.innerHTML?.includes('Email'))) {
-        console.log('Removing orphaned Agent HubSpot element:', child);
-        child.remove();
-      }
-    });
+    // Clean up any orphaned HubSpot elements, but preserve footer form
+    setTimeout(() => {
+      cleanupOrphanedElements();
+    }, 100);
     
     document.body.style.overflow = 'auto';
   };
@@ -274,21 +284,49 @@ export const openAgentForm = () => {
   // Add to DOM
   document.body.appendChild(overlay);
 
-  // Initialize HubSpot form if the script is loaded
-  if (window.hbspt) {
-    window.hbspt.forms.create({
-      region: 'na1',
-      portalId: '45865556',
-      formId: 'be1824d6-c6db-41c7-8b17-62e65b7f5662',
-      target: formContainer,
-      onFormReady: () => {
-        console.log('Agent HubSpot form ready');
-      },
-      onFormSubmitted: () => {
-        console.log('Agent HubSpot form submitted');
-        // Close modal after successful submission
-        setTimeout(closeModal, 2000);
+  // Initialize HubSpot form with better error handling and timing
+  const initializeForm = () => {
+    if (window.hbspt && window.hbspt.forms) {
+      console.log('Initializing Agent HubSpot form in modal...');
+      
+      try {
+        window.hbspt.forms.create({
+          region: 'na1',
+          portalId: '45865556',
+          formId: 'be1824d6-c6db-41c7-8b17-62e65b7f5662',
+          target: formContainer,
+          onFormReady: () => {
+            console.log('Agent HubSpot form ready');
+            // Ensure proper styling
+            const form = formContainer.querySelector('.hs-form') as HTMLElement;
+            if (form) {
+              form.style.cssText = `
+                max-width: 100%;
+                overflow: visible;
+                position: relative;
+                z-index: 1;
+              `;
+            }
+          },
+          onFormSubmitted: () => {
+            console.log('Agent HubSpot form submitted');
+            setTimeout(closeModal, 2000);
+          },
+          onFormDefinitionFetchError: (error: any) => {
+            console.error('Agent HubSpot form fetch error:', error);
+          }
+        });
+      } catch (error) {
+        console.error('Error creating Agent HubSpot form:', error);
+        // Show fallback message
+        formContainer.innerHTML = '<p style="padding: 20px; text-align: center;">Unable to load form. Please try again later.</p>';
       }
-    });
-  }
+    } else {
+      console.log('HubSpot script not ready for Agent form, retrying...');
+      setTimeout(initializeForm, 500);
+    }
+  };
+
+  // Try to initialize form after a short delay to ensure modal is rendered
+  setTimeout(initializeForm, 100);
 };

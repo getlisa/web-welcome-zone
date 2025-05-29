@@ -1,77 +1,68 @@
-
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 const FooterSection = () => {
   useEffect(() => {
-    // Clean up any orphaned HubSpot elements first
-    const cleanupOrphanedElements = () => {
-      const bodyChildren = Array.from(document.body.children);
-      bodyChildren.forEach(child => {
-        if (child.id !== 'root' && 
-            !child.closest('#root') &&
-            (child.innerHTML?.includes('hsfc-') || 
-             child.innerHTML?.includes('First Name') ||
-             child.innerHTML?.includes('Last Name') ||
-             child.innerHTML?.includes('Email'))) {
-          console.log('Cleaning up orphaned element before footer init:', child);
-          child.remove();
-        }
-      });
-    };
-
-    // Initialize HubSpot form for footer with enhanced targeting
+    // Initialize HubSpot form for footer with enhanced targeting and error handling
     const initFooterForm = () => {
-      cleanupOrphanedElements();
-      
-      if (window.hbspt) {
+      if (window.hbspt && window.hbspt.forms) {
         const targetElement = document.getElementById("footer-hubspot-form");
         if (targetElement) {
           // Clear any existing content in the target
           targetElement.innerHTML = '';
           
           console.log('Initializing footer HubSpot form...');
-          window.hbspt.forms.create({
-            portalId: "45865556",
-            formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
-            region: "na1",
-            target: targetElement,
-            onFormReady: () => {
-              console.log('Footer HubSpot form ready');
-              // Ensure the form stays within its container
-              const form = targetElement.querySelector('.hs-form') as HTMLElement;
-              if (form) {
-                form.style.cssText = `
-                  max-width: 100%;
-                  overflow: hidden;
+          
+          try {
+            window.hbspt.forms.create({
+              portalId: "45865556",
+              formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
+              region: "na1",
+              target: targetElement,
+              onFormReady: () => {
+                console.log('Footer HubSpot form ready');
+                // Ensure the form stays within its container
+                const form = targetElement.querySelector('.hs-form') as HTMLElement;
+                if (form) {
+                  form.style.cssText = `
+                    max-width: 100%;
+                    overflow: hidden;
+                    position: relative;
+                    z-index: 1;
+                  `;
+                }
+                
+                // Ensure the target container has proper styling
+                targetElement.style.cssText = `
                   position: relative;
                   z-index: 1;
+                  max-width: 100%;
+                  contain: layout style;
+                  overflow: hidden;
                 `;
+              },
+              onFormSubmitted: () => {
+                console.log('Footer form submitted');
+              },
+              onFormDefinitionFetchError: (error: any) => {
+                console.error('Footer HubSpot form fetch error:', error);
               }
-              
-              // Ensure the target container has proper styling
-              targetElement.style.cssText = `
-                position: relative;
-                z-index: 1;
-                max-width: 100%;
-                contain: layout style;
-                overflow: hidden;
-              `;
-            },
-            onFormSubmitted: () => {
-              console.log('Footer form submitted');
-            }
-          });
+            });
+          } catch (error) {
+            console.error('Error creating footer HubSpot form:', error);
+            targetElement.innerHTML = '<p style="color: white; opacity: 0.7; text-align: center;">Unable to load newsletter form.</p>';
+          }
         }
+      } else {
+        console.log('HubSpot script not ready for footer, retrying...');
+        setTimeout(initFooterForm, 1000);
       }
     };
 
-    // Try to initialize immediately
+    // Try to initialize immediately and with delays
     initFooterForm();
-
-    // Also try after delays to ensure script is loaded
-    const timer1 = setTimeout(initFooterForm, 1000);
-    const timer2 = setTimeout(initFooterForm, 3000);
+    const timer1 = setTimeout(initFooterForm, 2000);
+    const timer2 = setTimeout(initFooterForm, 5000);
 
     return () => {
       clearTimeout(timer1);
