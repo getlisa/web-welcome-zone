@@ -80,7 +80,7 @@ const FinalCta = () => {
               asChild
               className="btn-3d relative bg-gradient-primary text-white hover:shadow-[0_0_30px_rgba(243,213,229,0.4)] text-lg py-7 px-8 rounded-xl overflow-hidden group"
             >
-              <a href="https://getlisa.ai/voice/login" target="_blank" rel="noopener noreferrer">
+              <a href="https://voice.getlisa.ai/login" target="_blank" rel="noopener noreferrer">
                 <span className="relative z-10 flex items-center gap-2">
                   <span>▶️</span> 
                   Try Your First Agent Free
