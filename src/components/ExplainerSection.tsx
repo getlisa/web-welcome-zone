@@ -62,7 +62,7 @@ const ExplainerSection = () => {
             <div className="absolute inset-48 rounded-full border border-dashed border-white/10 animate-[spin_22s_linear_infinite_reverse]"></div>
             
             {/* Orbital agents - each positioned on their corresponding orbital path */}
-            {/* AI Call Agent on outermost orbit (inset-0) */}
+            {/* AI Call Agent on outermost orbit (inset-0) - top position */}
             <div className="absolute inset-0 animate-[spin_40s_linear_infinite]">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
@@ -76,9 +76,9 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            {/* AI Collection on second orbit (inset-16) */}
+            {/* AI Collection on second orbit (inset-16) - right position */}
             <div className="absolute inset-16 animate-[spin_30s_linear_infinite_reverse]" style={{ animationDelay: '0.5s' }}>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
+              <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
                     src="https://zentrades.pro/wp-content/uploads/2025/05/3-2.svg" 
@@ -90,9 +90,9 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            {/* AI Scheduler on third orbit (inset-32) */}
+            {/* AI Scheduler on third orbit (inset-32) - bottom position */}
             <div className="absolute inset-32 animate-[spin_20s_linear_infinite]" style={{ animationDelay: '0.8s' }}>
-              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
                     src="https://zentrades.pro/wp-content/uploads/2025/05/4.svg" 
@@ -104,9 +104,9 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            {/* AI Fleet on innermost orbit (inset-48) */}
+            {/* AI Fleet on innermost orbit (inset-48) - left position */}
             <div className="absolute inset-48 animate-[spin_22s_linear_infinite_reverse]" style={{ animationDelay: '1.2s' }}>
-              <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
+              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
                     src="https://zentrades.pro/wp-content/uploads/2025/05/5.svg" 
