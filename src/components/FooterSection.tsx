@@ -1,7 +1,20 @@
 
 import { ArrowRight } from 'lucide-react';
+import { useEffect } from 'react';
 
 const FooterSection = () => {
+  useEffect(() => {
+    // Initialize HubSpot form for footer
+    if (window.hbspt) {
+      window.hbspt.forms.create({
+        portalId: "45865556",
+        formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
+        region: "na1",
+        target: "#footer-hubspot-form"
+      });
+    }
+  }, []);
+
   return (
     <footer className="bg-lisa-darker pt-20 pb-8 border-t border-white/10">
       <div className="container mx-auto px-4">
@@ -52,18 +65,7 @@ const FooterSection = () => {
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Stay Updated</h3>
             <p className="text-white/70 mb-4">Get the latest AI trends for business operations.</p>
-            <div className="glass rounded-lg p-1">
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="bg-transparent text-white px-4 py-2 flex-1 outline-none" 
-                />
-                <button className="bg-gradient-primary p-2 rounded-lg text-white">
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
+            <div id="footer-hubspot-form" className="glass rounded-lg p-1"></div>
           </div>
         </div>
         

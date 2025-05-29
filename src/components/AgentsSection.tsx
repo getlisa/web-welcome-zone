@@ -1,7 +1,7 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { openAgentForm } from '@/utils/hubspotForm';
 
 const agents = [
   {
@@ -184,17 +184,11 @@ const AgentsSection = () => {
     };
   }, []);
 
-  const openHubSpotForm = () => {
-    // HubSpot form popup - placeholder for now
-    console.log('Opening HubSpot form...');
-    alert('HubSpot demo form would open here. Contact us at demo@lisa.com');
-  };
-
   const handleTryNowClick = (agent: typeof agents[0]) => {
     if (agent.hasLink && agent.link) {
       window.open(agent.link, '_blank');
     } else {
-      openHubSpotForm();
+      openAgentForm();
     }
   };
 
