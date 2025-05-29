@@ -64,57 +64,49 @@ const ExplainerSection = () => {
             {/* Orbital agents - each positioned on their corresponding orbital path */}
             {/* AI Call Agent on outermost orbit (inset-0) - top position */}
             <div className="absolute inset-0 animate-[spin_40s_linear_infinite]">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
-                <div className="text-center">
-                  <img 
-                    src="https://zentrades.pro/wp-content/uploads/2025/05/2-2.svg" 
-                    alt="AI Call Agent" 
-                    className="w-12 h-12 mx-auto"
-                  />
-                  <div className="text-xs mt-1">AI Call Agent</div>
-                </div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex flex-col items-center justify-center">
+                <img 
+                  src="https://zentrades.pro/wp-content/uploads/2025/05/2-2.svg" 
+                  alt="AI Call Agent" 
+                  className="w-10 h-10 mb-1"
+                />
+                <div className="text-[8px] text-center leading-tight">AI Call Agent</div>
               </div>
             </div>
             
             {/* AI Collection on second orbit (inset-16) - right position */}
             <div className="absolute inset-16 animate-[spin_30s_linear_infinite_reverse]" style={{ animationDelay: '0.5s' }}>
-              <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
-                <div className="text-center">
-                  <img 
-                    src="https://zentrades.pro/wp-content/uploads/2025/05/3-2.svg" 
-                    alt="Research Agent" 
-                    className="w-12 h-12 mx-auto"
-                  />
-                  <div className="text-xs mt-1">AI Collection</div>
-                </div>
+              <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex flex-col items-center justify-center">
+                <img 
+                  src="https://zentrades.pro/wp-content/uploads/2025/05/3-2.svg" 
+                  alt="Research Agent" 
+                  className="w-10 h-10 mb-1"
+                />
+                <div className="text-[8px] text-center leading-tight">AI Collection</div>
               </div>
             </div>
             
             {/* AI Scheduler on third orbit (inset-32) - bottom position */}
             <div className="absolute inset-32 animate-[spin_20s_linear_infinite]" style={{ animationDelay: '0.8s' }}>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
-                <div className="text-center">
-                  <img 
-                    src="https://zentrades.pro/wp-content/uploads/2025/05/4.svg" 
-                    alt="Invoice Agent" 
-                    className="w-12 h-12 mx-auto"
-                  />
-                  <div className="text-xs mt-1">AI Scheduler</div>
-                </div>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 luxury-card w-24 h-24 rounded-full flex flex-col items-center justify-center">
+                <img 
+                  src="https://zentrades.pro/wp-content/uploads/2025/05/4.svg" 
+                  alt="Invoice Agent" 
+                  className="w-10 h-10 mb-1"
+                />
+                <div className="text-[8px] text-center leading-tight">AI Scheduler</div>
               </div>
             </div>
             
             {/* AI Fleet on innermost orbit (inset-48) - left position */}
             <div className="absolute inset-48 animate-[spin_22s_linear_infinite_reverse]" style={{ animationDelay: '1.2s' }}>
-              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
-                <div className="text-center">
-                  <img 
-                    src="https://zentrades.pro/wp-content/uploads/2025/05/5.svg" 
-                    alt="Calendar Agent" 
-                    className="w-12 h-12 mx-auto"
-                  />
-                  <div className="text-xs mt-1">AI Fleet</div>
-                </div>
+              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex flex-col items-center justify-center">
+                <img 
+                  src="https://zentrades.pro/wp-content/uploads/2025/05/5.svg" 
+                  alt="Calendar Agent" 
+                  className="w-10 h-10 mb-1"
+                />
+                <div className="text-[8px] text-center leading-tight">AI Fleet</div>
               </div>
             </div>
           </div>
