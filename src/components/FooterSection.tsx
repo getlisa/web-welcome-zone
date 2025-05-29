@@ -1,3 +1,4 @@
+
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
@@ -21,31 +22,43 @@ const FooterSection = () => {
               target: targetElement,
               onFormReady: () => {
                 console.log('Footer HubSpot form ready');
-                // Ensure the form stays within its container
+                
+                // Ensure the form stays within its container with very strict containment
                 const form = targetElement.querySelector('.hs-form') as HTMLElement;
                 if (form) {
                   form.style.cssText = `
-                    max-width: 100%;
-                    overflow: hidden;
-                    position: relative;
-                    z-index: 1;
+                    max-width: 100% !important;
+                    width: 100% !important;
+                    overflow: hidden !important;
+                    position: relative !important;
+                    z-index: 1 !important;
+                    contain: layout style size !important;
                   `;
+                  
+                  // Also style any form elements to stay contained
+                  const formElements = form.querySelectorAll('*');
+                  formElements.forEach(element => {
+                    const el = element as HTMLElement;
+                    if (el.style) {
+                      el.style.maxWidth = '100%';
+                      el.style.boxSizing = 'border-box';
+                    }
+                  });
                 }
                 
-                // Ensure the target container has proper styling
+                // Ensure the target container has very strict containment
                 targetElement.style.cssText = `
-                  position: relative;
-                  z-index: 1;
-                  max-width: 100%;
-                  contain: layout style;
-                  overflow: hidden;
+                  position: relative !important;
+                  z-index: 1 !important;
+                  max-width: 100% !important;
+                  width: 100% !important;
+                  contain: layout style size !important;
+                  overflow: hidden !important;
+                  isolation: isolate !important;
                 `;
               },
               onFormSubmitted: () => {
                 console.log('Footer form submitted');
-              },
-              onFormDefinitionFetchError: (error: any) => {
-                console.error('Footer HubSpot form fetch error:', error);
               }
             });
           } catch (error) {
@@ -127,7 +140,10 @@ const FooterSection = () => {
                 position: 'relative', 
                 zIndex: 10,
                 maxWidth: '100%',
-                contain: 'layout style size'
+                width: '100%',
+                contain: 'layout style size',
+                isolation: 'isolate',
+                overflow: 'hidden'
               }}
             ></div>
           </div>
