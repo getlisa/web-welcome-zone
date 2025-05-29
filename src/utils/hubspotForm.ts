@@ -27,10 +27,10 @@ export const openHubSpotForm = () => {
   const modal = document.createElement('div');
   modal.id = 'hubspot-modal-content';
   modal.style.cssText = `
-    background: white;
+   
     border-radius: 12px;
     padding: 40px 30px 30px 30px;
-    max-width: 600px;
+    max-width: 900px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
