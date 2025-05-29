@@ -10,6 +10,7 @@ declare global {
           target: HTMLElement | string;
           onFormReady?: () => void;
           onFormSubmitted?: () => void;
+          onFormDefinitionFetchError?: (error: any) => void;
         }) => void;
       };
     };

@@ -145,9 +145,6 @@ export const openHubSpotForm = () => {
           onFormSubmitted: () => {
             console.log('HubSpot modal form submitted');
             setTimeout(closeModal, 2000);
-          },
-          onFormDefinitionFetchError: (error: any) => {
-            console.error('HubSpot form fetch error:', error);
           }
         });
       } catch (error) {
@@ -311,9 +308,6 @@ export const openAgentForm = () => {
           onFormSubmitted: () => {
             console.log('Agent HubSpot form submitted');
             setTimeout(closeModal, 2000);
-          },
-          onFormDefinitionFetchError: (error: any) => {
-            console.error('Agent HubSpot form fetch error:', error);
           }
         });
       } catch (error) {
