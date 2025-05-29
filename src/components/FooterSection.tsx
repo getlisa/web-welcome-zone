@@ -4,11 +4,33 @@ import { useEffect } from 'react';
 
 const FooterSection = () => {
   useEffect(() => {
-    // Initialize HubSpot form for footer with a delay to ensure DOM is ready
+    // Clean up any orphaned HubSpot elements first
+    const cleanupOrphanedElements = () => {
+      const bodyChildren = Array.from(document.body.children);
+      bodyChildren.forEach(child => {
+        if (child.id !== 'root' && 
+            !child.closest('#root') &&
+            (child.innerHTML?.includes('hsfc-') || 
+             child.innerHTML?.includes('First Name') ||
+             child.innerHTML?.includes('Last Name') ||
+             child.innerHTML?.includes('Email'))) {
+          console.log('Cleaning up orphaned element before footer init:', child);
+          child.remove();
+        }
+      });
+    };
+
+    // Initialize HubSpot form for footer with enhanced targeting
     const initFooterForm = () => {
+      cleanupOrphanedElements();
+      
       if (window.hbspt) {
         const targetElement = document.getElementById("footer-hubspot-form");
-        if (targetElement && targetElement.children.length === 0) {
+        if (targetElement) {
+          // Clear any existing content in the target
+          targetElement.innerHTML = '';
+          
+          console.log('Initializing footer HubSpot form...');
           window.hbspt.forms.create({
             portalId: "45865556",
             formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
@@ -22,8 +44,22 @@ const FooterSection = () => {
                 form.style.cssText = `
                   max-width: 100%;
                   overflow: hidden;
+                  position: relative;
+                  z-index: 1;
                 `;
               }
+              
+              // Ensure the target container has proper styling
+              targetElement.style.cssText = `
+                position: relative;
+                z-index: 1;
+                max-width: 100%;
+                contain: layout style;
+                overflow: hidden;
+              `;
+            },
+            onFormSubmitted: () => {
+              console.log('Footer form submitted');
             }
           });
         }
@@ -33,10 +69,14 @@ const FooterSection = () => {
     // Try to initialize immediately
     initFooterForm();
 
-    // Also try after a short delay in case the script is still loading
-    const timer = setTimeout(initFooterForm, 1000);
+    // Also try after delays to ensure script is loaded
+    const timer1 = setTimeout(initFooterForm, 1000);
+    const timer2 = setTimeout(initFooterForm, 3000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, []);
 
   return (
@@ -91,12 +131,12 @@ const FooterSection = () => {
             <p className="text-white/70 mb-4">Get the latest AI trends for business operations.</p>
             <div 
               id="footer-hubspot-form" 
-              className="min-h-[120px] rounded-lg overflow-hidden"
+              className="min-h-[120px] rounded-lg overflow-hidden relative z-10"
               style={{ 
                 position: 'relative', 
-                zIndex: 1,
+                zIndex: 10,
                 maxWidth: '100%',
-                contain: 'layout style'
+                contain: 'layout style size'
               }}
             ></div>
           </div>
