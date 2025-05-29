@@ -61,8 +61,9 @@ const ExplainerSection = () => {
             <div className="absolute inset-40 rounded-full border border-dashed border-white/10 animate-[spin_20s_linear_infinite]"></div>
             <div className="absolute inset-60 rounded-full border border-dashed border-white/10 animate-[spin_22s_linear_infinite_reverse]"></div>
             
-            {/* Orbital agents with much larger spacing */}
-            <div className="absolute inset-0 animate-[spin_20s_linear_infinite]">
+            {/* Orbital agents - each positioned on their corresponding orbital path */}
+            {/* AI Call Agent on outermost orbit (inset-0) */}
+            <div className="absolute inset-0 animate-[spin_40s_linear_infinite]">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
@@ -75,7 +76,8 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            <div className="absolute inset-20 animate-[spin_20s_linear_infinite_reverse]" style={{ animationDelay: '0.5s' }}>
+            {/* AI Collection on second orbit (inset-20) */}
+            <div className="absolute inset-20 animate-[spin_30s_linear_infinite_reverse]" style={{ animationDelay: '0.5s' }}>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
@@ -88,7 +90,8 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            <div className="absolute inset-40 animate-[spin_25s_linear_infinite]" style={{ animationDelay: '0.8s' }}>
+            {/* AI Scheduler on third orbit (inset-40) */}
+            <div className="absolute inset-40 animate-[spin_20s_linear_infinite]" style={{ animationDelay: '0.8s' }}>
               <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
@@ -101,6 +104,7 @@ const ExplainerSection = () => {
               </div>
             </div>
             
+            {/* AI Fleet on innermost orbit (inset-60) */}
             <div className="absolute inset-60 animate-[spin_22s_linear_infinite_reverse]" style={{ animationDelay: '1.2s' }}>
               <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
