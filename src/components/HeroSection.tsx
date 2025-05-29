@@ -171,7 +171,7 @@ const HeroSection = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 reveal-on-scroll opacity-0 text-center leading-tight"
             style={{ animationDelay: '0.3s' }}
           >
-            Your Team, Reinvented — <span className="gradient-text">One AI Agent at a Time.</span>
+            Your Team, Reinvented  <span className="gradient-text">The Only AI your business Needs.</span>
           </h1>
           
           <p 
