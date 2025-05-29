@@ -43,7 +43,7 @@ const ExplainerSection = () => {
           </p>
           
           {/* LISA Brain Diagram */}
-          <div className="relative w-full max-w-2xl mx-auto aspect-square">
+          <div className="relative w-full max-w-3xl mx-auto aspect-square">
             {/* Center circle - Now using an image */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full glass flex items-center justify-center z-10 animate-pulse-glow">
               <div className="text-center">
@@ -55,12 +55,12 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            {/* Orbital paths */}
+            {/* Orbital paths with increased gaps */}
             <div className="absolute inset-0 rounded-full border border-dashed border-white/10 animate-[spin_40s_linear_infinite]"></div>
-            <div className="absolute inset-8 rounded-full border border-dashed border-white/10 animate-[spin_30s_linear_infinite_reverse]"></div>
-            <div className="absolute inset-16 rounded-full border border-dashed border-white/10 animate-[spin_20s_linear_infinite]"></div>
+            <div className="absolute inset-16 rounded-full border border-dashed border-white/10 animate-[spin_30s_linear_infinite_reverse]"></div>
+            <div className="absolute inset-32 rounded-full border border-dashed border-white/10 animate-[spin_20s_linear_infinite]"></div>
             
-            {/* Orbital agents - Now using images */}
+            {/* Orbital agents with increased spacing */}
             <div className="absolute inset-0 animate-[spin_20s_linear_infinite]">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
@@ -74,7 +74,7 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            <div className="absolute inset-0 animate-[spin_20s_linear_infinite_reverse]" style={{ animationDelay: '0.5s' }}>
+            <div className="absolute inset-16 animate-[spin_20s_linear_infinite_reverse]" style={{ animationDelay: '0.5s' }}>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
@@ -87,7 +87,7 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            <div className="absolute inset-0 animate-[spin_25s_linear_infinite]" style={{ animationDelay: '0.8s' }}>
+            <div className="absolute inset-32 animate-[spin_25s_linear_infinite]" style={{ animationDelay: '0.8s' }}>
               <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
@@ -100,7 +100,7 @@ const ExplainerSection = () => {
               </div>
             </div>
             
-            <div className="absolute inset-0 animate-[spin_22s_linear_infinite_reverse]" style={{ animationDelay: '1.2s' }}>
+            <div className="absolute inset-32 animate-[spin_22s_linear_infinite_reverse]" style={{ animationDelay: '1.2s' }}>
               <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 luxury-card w-24 h-24 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <img 
