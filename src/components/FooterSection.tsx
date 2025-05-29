@@ -1,4 +1,3 @@
-
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
@@ -6,12 +5,15 @@ const FooterSection = () => {
   useEffect(() => {
     // Initialize HubSpot form for footer
     if (window.hbspt) {
-      window.hbspt.forms.create({
-        portalId: "45865556",
-        formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
-        region: "na1",
-        target: "#footer-hubspot-form"
-      });
+      const targetElement = document.getElementById("footer-hubspot-form");
+      if (targetElement) {
+        window.hbspt.forms.create({
+          portalId: "45865556",
+          formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
+          region: "na1",
+          target: targetElement
+        });
+      }
     }
   }, []);
 

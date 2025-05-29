@@ -35,7 +35,6 @@ const FinalCta = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 aspect-square rounded-full bg-warmBlush/10 filter blur-[80px]"></div>
       </div>
       
-      {/* Vector animation */}
       <div className="absolute inset-0 -z-5">
         <svg viewBox="0 0 800 600" className="w-full h-full opacity-10">
           <g>
@@ -51,7 +50,6 @@ const FinalCta = () => {
             ))}
           </g>
           
-          {/* Nodes */}
           <g>
             {Array.from({ length: 20 }).map((_, i) => (
               <circle 
@@ -78,12 +76,17 @@ const FinalCta = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button className="btn-3d relative bg-gradient-primary text-white hover:shadow-[0_0_30px_rgba(243,213,229,0.4)] text-lg py-7 px-8 rounded-xl overflow-hidden group">
-              <span className="relative z-10 flex items-center gap-2">
-                <span>▶️</span> 
-                Try Your First Agent Free
-              </span>
-              <div className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            <Button 
+              asChild
+              className="btn-3d relative bg-gradient-primary text-white hover:shadow-[0_0_30px_rgba(243,213,229,0.4)] text-lg py-7 px-8 rounded-xl overflow-hidden group"
+            >
+              <a href="https://getlisa.ai/voice/login" target="_blank" rel="noopener noreferrer">
+                <span className="relative z-10 flex items-center gap-2">
+                  <span>▶️</span> 
+                  Try Your First Agent Free
+                </span>
+                <div className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+              </a>
             </Button>
             
             <Button 
