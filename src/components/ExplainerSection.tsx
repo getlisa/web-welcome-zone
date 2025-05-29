@@ -126,19 +126,6 @@ const ExplainerSection = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="absolute inset-0 animate-[spin_28s_linear_infinite_reverse]" style={{ animationDelay: '1.5s' }}>
-              <div className="absolute bottom-1/4 left-0 -translate-x-1/3 luxury-card w-20 h-20 rounded-full flex items-center justify-center">
-                <div className="text-center">
-                  <img 
-                    src="/placeholder.svg" 
-                    alt="Chat Agent" 
-                    className="w-10 h-10 mx-auto"
-                  />
-                  <div className="text-xs mt-1">Chat</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
