@@ -155,7 +155,7 @@ const HeroSection = () => {
                   asChild
                   className="btn-3d bg-gradient-primary text-white transition-all hover:scale-105 font-medium text-lg rounded-xl h-14 px-8 w-full sm:w-auto group"
                 >
-                  <a href="https://getlisa.ai/voice/login" target="_blank" rel="noopener noreferrer">
+                  <a href="https://voice.getlisa.ai/login" target="_blank" rel="noopener noreferrer">
                     <span className="z-10 flex items-center gap-2">
                       <span>▶️</span> 
                       <span>Try Your First Agent Free</span>
