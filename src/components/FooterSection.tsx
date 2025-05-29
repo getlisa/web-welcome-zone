@@ -1,3 +1,4 @@
+
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
@@ -12,7 +13,18 @@ const FooterSection = () => {
             portalId: "45865556",
             formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
             region: "na1",
-            target: targetElement
+            target: targetElement,
+            onFormReady: () => {
+              console.log('Footer HubSpot form ready');
+              // Ensure the form stays within its container
+              const form = targetElement.querySelector('.hs-form');
+              if (form) {
+                form.style.cssText = `
+                  max-width: 100%;
+                  overflow: hidden;
+                `;
+              }
+            }
           });
         }
       }
@@ -79,8 +91,13 @@ const FooterSection = () => {
             <p className="text-white/70 mb-4">Get the latest AI trends for business operations.</p>
             <div 
               id="footer-hubspot-form" 
-              className="min-h-[120px] rounded-lg"
-              style={{ position: 'relative', zIndex: 1 }}
+              className="min-h-[120px] rounded-lg overflow-hidden"
+              style={{ 
+                position: 'relative', 
+                zIndex: 1,
+                maxWidth: '100%',
+                contain: 'layout style'
+              }}
             ></div>
           </div>
         </div>

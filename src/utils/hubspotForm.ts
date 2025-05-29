@@ -52,9 +52,20 @@ export const openHubSpotForm = () => {
   formContainer.setAttribute('data-form-id', 'c3428dcb-b18c-4277-b463-b7869c42800f');
   formContainer.setAttribute('data-portal-id', '45865556');
 
-  // Close modal function
+  // Close modal function with proper cleanup
   const closeModal = () => {
-    document.body.removeChild(overlay);
+    // Clean up any HubSpot form elements that might have been created
+    const hsFormElements = document.querySelectorAll('.hs-form, .hs-form-iframe, .submitted-message');
+    hsFormElements.forEach(element => {
+      if (element.closest('.hs-form-frame') === formContainer) {
+        element.remove();
+      }
+    });
+    
+    // Remove the modal overlay
+    if (document.body.contains(overlay)) {
+      document.body.removeChild(overlay);
+    }
     document.body.style.overflow = 'auto';
   };
 
@@ -83,7 +94,15 @@ export const openHubSpotForm = () => {
       region: 'na1',
       portalId: '45865556',
       formId: 'c3428dcb-b18c-4277-b463-b7869c42800f',
-      target: formContainer
+      target: formContainer,
+      onFormReady: () => {
+        console.log('HubSpot form ready');
+      },
+      onFormSubmitted: () => {
+        console.log('HubSpot form submitted');
+        // Close modal after successful submission
+        setTimeout(closeModal, 2000);
+      }
     });
   }
 };
@@ -141,9 +160,20 @@ export const openAgentForm = () => {
   formContainer.setAttribute('data-form-id', 'be1824d6-c6db-41c7-8b17-62e65b7f5662');
   formContainer.setAttribute('data-portal-id', '45865556');
 
-  // Close modal function
+  // Close modal function with proper cleanup
   const closeModal = () => {
-    document.body.removeChild(overlay);
+    // Clean up any HubSpot form elements that might have been created
+    const hsFormElements = document.querySelectorAll('.hs-form, .hs-form-iframe, .submitted-message');
+    hsFormElements.forEach(element => {
+      if (element.closest('.hs-form-frame') === formContainer) {
+        element.remove();
+      }
+    });
+    
+    // Remove the modal overlay
+    if (document.body.contains(overlay)) {
+      document.body.removeChild(overlay);
+    }
     document.body.style.overflow = 'auto';
   };
 
@@ -172,7 +202,15 @@ export const openAgentForm = () => {
       region: 'na1',
       portalId: '45865556',
       formId: 'be1824d6-c6db-41c7-8b17-62e65b7f5662',
-      target: formContainer
+      target: formContainer,
+      onFormReady: () => {
+        console.log('Agent HubSpot form ready');
+      },
+      onFormSubmitted: () => {
+        console.log('Agent HubSpot form submitted');
+        // Close modal after successful submission
+        setTimeout(closeModal, 2000);
+      }
     });
   }
 };
