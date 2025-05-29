@@ -1,6 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { openHubSpotForm } from '@/utils/hubspotForm';
 
 const FinalCta = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -86,6 +87,7 @@ const FinalCta = () => {
             </Button>
             
             <Button 
+              onClick={openHubSpotForm}
               variant="outline" 
               className="btn-3d luxury-border bg-transparent text-white text-lg py-7 px-8 rounded-xl"
             >

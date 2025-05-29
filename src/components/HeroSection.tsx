@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import { openHubSpotForm } from '@/utils/hubspotForm';
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -172,6 +173,7 @@ const HeroSection = () => {
             </HoverCard>
             
             <Button 
+              onClick={openHubSpotForm}
               variant="outline" 
               className="btn-3d group flex items-center gap-2 text-white border border-white/20 hover:border-white/40 hover:bg-white/5 rounded-xl h-14 px-8 w-full sm:w-auto luxury-border"
             >
@@ -180,8 +182,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      
-      
       
     </section>
   );

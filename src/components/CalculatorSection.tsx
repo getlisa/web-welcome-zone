@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -37,7 +36,7 @@ const CalculatorSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="section-padding relative opacity-0 animate-on-scroll">
+    <section id="calculator" ref={sectionRef} className="section-padding relative opacity-0 animate-on-scroll">
       {/* Vector graphics background */}
       <div className="absolute inset-0 -z-10 opacity-20">
         <svg viewBox="0 0 800 400" className="w-full h-full">

@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { openHubSpotForm } from '@/utils/hubspotForm';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,12 +20,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const openHubSpotForm = () => {
-    // HubSpot form popup - placeholder for now
-    console.log('Opening HubSpot form...');
-    alert('HubSpot demo form would open here. Contact us at demo@lisa.com');
-  };
 
   return (
     <header 

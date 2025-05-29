@@ -1,6 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { openHubSpotForm } from '@/utils/hubspotForm';
 
 const DemoCtaSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -25,12 +26,6 @@ const DemoCtaSection = () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
-
-  const openHubSpotForm = () => {
-    // HubSpot form popup - placeholder for now
-    console.log('Opening HubSpot form...');
-    alert('HubSpot demo form would open here. Contact us at demo@lisa.com');
-  };
 
   return (
     <section ref={sectionRef} className="py-32 opacity-0 animate-on-scroll">
