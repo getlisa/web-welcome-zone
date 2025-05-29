@@ -50,7 +50,7 @@ const DemoCtaSection = () => {
                   variant="outline" 
                   className="btn-3d luxury-border bg-transparent border-0 text-white h-14 px-8 rounded-xl"
                 >
-                  <a href="https://getlisa.ai/voice/login" target="_blank" rel="noopener noreferrer">
+                  <a href="https://voice.getlisa.ai/login" target="_blank" rel="noopener noreferrer">
                     <span className="mr-2">⚡</span> Try an Agent Live
                   </a>
                 </Button>
