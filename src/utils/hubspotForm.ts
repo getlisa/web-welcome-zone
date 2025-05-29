@@ -19,10 +19,9 @@ export const openHubSpotForm = () => {
   // Create modal content
   const modal = document.createElement('div');
   modal.style.cssText = `
-    background: white;
     border-radius: 12px;
     padding: 20px;
-    max-width: 500px;
+    max-width: 900px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
