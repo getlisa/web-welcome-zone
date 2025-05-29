@@ -25,7 +25,7 @@ const agents = [
     color: 'from-warmBlush to-deepWine',
     delay: 0,
     hasLink: true,
-    link: 'https://getlisa.ai/voice/login'
+    link: 'https://voice.getlisa.ai/login'
   },
   {
     id: 'scheduling',
