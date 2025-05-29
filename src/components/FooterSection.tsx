@@ -1,4 +1,3 @@
-
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
@@ -13,7 +12,7 @@ const FooterSection = () => {
             portalId: "45865556",
             formId: "e3b6b5f4-4fc1-4784-87cd-06155d7de3d6",
             region: "na1",
-            target: "#footer-hubspot-form"
+            target: targetElement
           });
         }
       }
