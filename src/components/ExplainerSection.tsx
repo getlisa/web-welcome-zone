@@ -26,7 +26,7 @@ const ExplainerSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding relative opacity-0 animate-on-scroll">
+    <section id="explainer" ref={sectionRef} className="section-padding relative opacity-0 animate-on-scroll">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-deepWine/10 filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 rounded-full bg-warmBlush/10 filter blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>

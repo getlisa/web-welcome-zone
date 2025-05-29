@@ -40,14 +40,14 @@ const Navbar = () => {
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a 
-              href="#agents" 
+              href="#explainer" 
               className="text-white/80 hover:text-warmBlush relative overflow-hidden group transition-colors"
             >
               <span>How Lisa Works</span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-luxury transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
             </a>
             <a 
-              href="#testimonials" 
+              href="#agents" 
               className="text-white/80 hover:text-warmBlush relative overflow-hidden group transition-colors"
             >
               <span>Use Cases</span>
@@ -61,7 +61,7 @@ const Navbar = () => {
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-luxury transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
             </a>
             <a 
-              href="#agents" 
+              href="#calculator" 
               className="text-white/80 hover:text-warmBlush relative overflow-hidden group transition-colors"
             >
               <span>Why AI</span>
@@ -93,14 +93,17 @@ const Navbar = () => {
         mobileMenuOpen ? 'max-h-64 py-4' : 'max-h-0 py-0'
       }`}>
         <div className="container mx-auto px-4 flex flex-col space-y-4">
-          <a href="#agents" className="text-white hover:text-warmBlush transition-colors py-2">
-            Agents
+          <a href="#explainer" className="text-white hover:text-warmBlush transition-colors py-2">
+            How Lisa Works
           </a>
-          <a href="#testimonials" className="text-white hover:text-warmBlush transition-colors py-2">
-            Testimonials
+          <a href="#agents" className="text-white hover:text-warmBlush transition-colors py-2">
+            Use Cases
           </a>
           <a href="#why-lisa" className="text-white hover:text-warmBlush transition-colors py-2">
-            Why LISA
+            Tailored for you
+          </a>
+          <a href="#calculator" className="text-white hover:text-warmBlush transition-colors py-2">
+            Why AI
           </a>
           <Button className="btn-3d bg-gradient-primary text-white py-2 font-medium rounded-xl w-full">
             Get Started
