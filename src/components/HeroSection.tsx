@@ -125,44 +125,7 @@ const HeroSection = () => {
         }}
       ></div>
       
-      {/* Virtual assistant vector image */}
-      <div className="absolute right-10 bottom-20 w-64 h-64 md:w-96 md:h-96 hidden lg:block">
-        <svg viewBox="0 0 100 100" className="w-full h-full animate-float">
-          {/* Abstract AI assistant representation */}
-          <circle cx="50" cy="50" r="20" fill="url(#assistantGradient)" className="opacity-80" />
-          <circle cx="50" cy="50" r="30" stroke="#3e0c29" strokeWidth="0.5" fill="none" className="opacity-30" />
-          <circle cx="50" cy="50" r="40" stroke="#4A4A4A" strokeWidth="0.3" fill="none" className="opacity-20" />
-          
-          {/* Orbital elements */}
-          <g className="animate-orbit" style={{ transformOrigin: '50px 50px' }}>
-            <circle cx="90" cy="50" r="4" fill="#f3d5e5" className="opacity-80" />
-          </g>
-          <g className="animate-orbit" style={{ transformOrigin: '50px 50px', animationDelay: '0.5s', animationDuration: '8s' }}>
-            <circle cx="85" cy="50" r="3" fill="#3e0c29" className="opacity-80" />
-          </g>
-          
-          {/* Sound wave visualization */}
-          <g transform="translate(20, 50)">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <path 
-                key={i}
-                d={`M0,0 C2.5,${-5 - i * 2} 5,${5 + i * 2} 10,0`} 
-                stroke="#f3d5e5"
-                strokeWidth="0.7"
-                fill="none"
-                className="opacity-70"
-              />
-            ))}
-          </g>
-          
-          <defs>
-            <radialGradient id="assistantGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-              <stop offset="0%" stopColor="#4A4A4A" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#f3d5e5" stopOpacity="0.4" />
-            </radialGradient>
-          </defs>
-        </svg>
-      </div>
+      
 
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto">
@@ -218,11 +181,8 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center">
-        <span className="text-white/50 text-sm mb-2">Scroll to explore</span>
-        <div className="w-0.5 h-16 bg-gradient-to-b from-white/40 to-transparent"></div>
-      </div>
+      
+      
     </section>
   );
 };
