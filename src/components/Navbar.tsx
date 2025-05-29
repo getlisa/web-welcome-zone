@@ -20,6 +20,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const openHubSpotForm = () => {
+    // HubSpot form popup - placeholder for now
+    console.log('Opening HubSpot form...');
+    alert('HubSpot demo form would open here. Contact us at demo@lisa.com');
+  };
+
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -68,6 +74,7 @@ const Navbar = () => {
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-luxury transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
             </a>
             <Button 
+              onClick={openHubSpotForm}
               className="btn-3d bg-gradient-primary hover:shadow-[0_0_15px_rgba(243,213,229,0.4)] text-white rounded-xl"
             >
               Get Started
@@ -105,7 +112,10 @@ const Navbar = () => {
           <a href="#calculator" className="text-white hover:text-warmBlush transition-colors py-2">
             Why AI
           </a>
-          <Button className="btn-3d bg-gradient-primary text-white py-2 font-medium rounded-xl w-full">
+          <Button 
+            onClick={openHubSpotForm}
+            className="btn-3d bg-gradient-primary text-white py-2 font-medium rounded-xl w-full"
+          >
             Get Started
           </Button>
         </div>

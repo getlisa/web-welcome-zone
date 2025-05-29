@@ -23,7 +23,9 @@ const agents = [
     title: 'AI Calling',
     description: 'LISA answers all your calls, engages prospects, and never misses a lead. Always on, always professional.',
     color: 'from-warmBlush to-deepWine',
-    delay: 0
+    delay: 0,
+    hasLink: true,
+    link: 'https://lisa-calling-demo.com'
   },
   {
     id: 'scheduling',
@@ -47,7 +49,9 @@ const agents = [
     title: 'Smart Scheduling',
     description: 'Optimize technician routes and appointment slots to maximize productivity and minimize downtime.',
     color: 'from-coolGray to-warmBlush',
-    delay: 0.1
+    delay: 0.1,
+    hasLink: true,
+    link: 'https://lisa-scheduling-demo.com'
   },
   {
     id: 'invoice',
@@ -70,7 +74,8 @@ const agents = [
     title: 'Invoice Management',
     description: 'Automate invoice follow-ups and payment tracking — get paid faster with less hassle.',
     color: 'from-warmBlush to-coolGray',
-    delay: 0.2
+    delay: 0.2,
+    hasLink: false
   },
   {
     id: 'field',
@@ -95,7 +100,8 @@ const agents = [
     title: 'Field Operations',
     description: 'Real-time job tracking and technician coordination keep your projects on time and on budget.',
     color: 'from-deepWine to-coolGray',
-    delay: 0.3
+    delay: 0.3,
+    hasLink: false
   },
   {
     id: 'analytics',
@@ -120,7 +126,8 @@ const agents = [
     title: 'Data Analytics',
     description: 'Actionable insights and reports give you a clear view of your business health and growth opportunities.',
     color: 'from-coolGray to-deepWine',
-    delay: 0.4
+    delay: 0.4,
+    hasLink: false
   },
   {
     id: 'integration',
@@ -147,7 +154,8 @@ const agents = [
     title: 'AI Integration',
     description: 'Seamlessly connect LISA with your existing tools, CRMs, and software for smooth, end-to-end workflows.',
     color: 'from-warmBlush to-coolGray',
-    delay: 0.5
+    delay: 0.5,
+    hasLink: false
   }
 ];
 
@@ -175,6 +183,20 @@ const AgentsSection = () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
+
+  const openHubSpotForm = () => {
+    // HubSpot form popup - placeholder for now
+    console.log('Opening HubSpot form...');
+    alert('HubSpot demo form would open here. Contact us at demo@lisa.com');
+  };
+
+  const handleTryNowClick = (agent: typeof agents[0]) => {
+    if (agent.hasLink && agent.link) {
+      window.open(agent.link, '_blank');
+    } else {
+      openHubSpotForm();
+    }
+  };
 
   return (
     <section id="agents" ref={sectionRef} className="section-padding relative opacity-0 animate-on-scroll">
@@ -213,7 +235,10 @@ const AgentsSection = () => {
                     {agent.description}
                   </p>
                   
-                  <Button className="btn-3d bg-gradient-to-r from-deepWine to-warmBlush text-white w-full">
+                  <Button 
+                    onClick={() => handleTryNowClick(agent)}
+                    className="btn-3d bg-gradient-to-r from-deepWine to-warmBlush text-white w-full"
+                  >
                     Try Now
                   </Button>
                 </CardContent>

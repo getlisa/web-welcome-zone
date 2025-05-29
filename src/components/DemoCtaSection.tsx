@@ -26,6 +26,12 @@ const DemoCtaSection = () => {
     };
   }, []);
 
+  const openHubSpotForm = () => {
+    // HubSpot form popup - placeholder for now
+    console.log('Opening HubSpot form...');
+    alert('HubSpot demo form would open here. Contact us at demo@lisa.com');
+  };
+
   return (
     <section ref={sectionRef} className="py-32 opacity-0 animate-on-scroll">
       <div className="container mx-auto px-4">
@@ -37,7 +43,10 @@ const DemoCtaSection = () => {
               </h3>
               
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Button className="btn-3d bg-gradient-primary text-white hover:shadow-[0_0_20px_rgba(243,213,229,0.4)] rounded-xl h-14 px-8">
+                <Button 
+                  onClick={openHubSpotForm}
+                  className="btn-3d bg-gradient-primary text-white hover:shadow-[0_0_20px_rgba(243,213,229,0.4)] rounded-xl h-14 px-8"
+                >
                   <span className="mr-2">🧠</span> Book a Demo
                 </Button>
                 
