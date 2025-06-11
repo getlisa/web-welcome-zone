@@ -72,14 +72,14 @@ const TailoredSection = () => {
   const currentPersona = personas.find(p => p.id === activePersona) || personas[0];
 
   return (
-    <section id="tailored" ref={sectionRef} className="section-padding relative bg-lisa-gray-100">
+    <section id="tailored" ref={sectionRef} className="section-padding relative bg-CLARA-gray-100">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 tailored-reveal opacity-0">
-            Designed For <span className="text-lisa-green">Everyone</span> On Your Team
+            Designed For <span className="text-CLARA-green">Everyone</span> On Your Team
           </h2>
-          <p className="text-lg text-lisa-gray-600 tailored-reveal opacity-0" style={{ animationDelay: '0.2s' }}>
-            LISA adapts to each team member's role and helps solve their specific challenges.
+          <p className="text-lg text-CLARA-gray-600 tailored-reveal opacity-0" style={{ animationDelay: '0.2s' }}>
+            CLARA adapts to each team member's role and helps solve their specific challenges.
           </p>
         </div>
         
@@ -133,7 +133,7 @@ const TailoredSection = () => {
             
             <div className="mt-12 bg-white rounded-xl p-8 border border-lisa-gray-200 shadow-sm">
               <p className="text-lg text-center text-lisa-gray-700">
-                "LISA understands each role in your business, providing targeted assistance where it's needed most."
+                "CLARA understands each role in your business, providing targeted assistance where it's needed most."
               </p>
             </div>
           </div>
