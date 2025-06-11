@@ -72,7 +72,7 @@ const FinalCta = () => {
           </h2>
           
           <p className="text-xl text-white/80 mb-12">
-            Let LISA handle the work that drains your team. No more delays. No more burnout. Just execution — on autopilot.
+            Let Clara handle the work that drains your team. No more delays. No more burnout. Just execution — on autopilot.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-6">
