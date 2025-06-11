@@ -12,13 +12,13 @@ const reasons = [
   {
     id: 2,
     title: "Practical AI Solutions",
-    description: "LISA offers trades-specific AI tools that solve real problems, not generic tech that creates more work.",
+    description: "CLARA offers trades-specific AI tools that solve real problems, not generic tech that creates more work.",
     icon: "🧠"
   },
   {
     id: 3,
     title: "Seamless Integration",
-    description: "Keep your existing systems and workflows—LISA simply adds intelligence where you need it most.",
+    description: "Keep your existing systems and workflows—CLARA simply adds intelligence where you need it most.",
     icon: "🔄"
   }
 ];
