@@ -82,7 +82,7 @@ const CalculatorSection = () => {
               The Hidden Cost of <span className="gradient-text">Doing It Manually</span>
             </h2>
             <p className="text-white/80">
-              Enter your average hourly cost, task frequency, and LISA will show you how much time and money you're losing.
+              Enter your average hourly cost, task frequency, and Clara AI will show you how much time and money you're losing.
             </p>
           </div>
           
