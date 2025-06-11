@@ -21,7 +21,7 @@ const agents = [
       </svg>
     ),
     title: 'AI Calling',
-    description: 'LISA answers all your calls, engages prospects, and never misses a lead. Always on, always professional.',
+    description: 'CLARA answers all your calls, engages prospects, and never misses a lead. Always on, always professional.',
     color: 'from-warmBlush to-deepWine',
     delay: 0,
     hasLink: true,
