@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <a href="#" className="flex items-center mb-4 md:mb-0 md:mr-auto">
             <img 
-              src="https://zentrades.pro/wp-content/uploads/2025/05/52213e-540-x-540-px-2.png" 
+              src="https://zentrades.pro/wp-content/uploads/2025/06/clara_logo-scaled.png" 
               alt="CLARA Logo" 
               className="h-16 mr-2"
             />
