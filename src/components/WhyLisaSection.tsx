@@ -47,7 +47,7 @@ const WhyLisaSection = () => {
   }, []);
 
   return (
-    <section id="why-lisa" ref={sectionRef} className="section-padding relative overflow-hidden opacity-0 animate-on-scroll">
+    <section id="why-CLARA" ref={sectionRef} className="section-padding relative overflow-hidden opacity-0 animate-on-scroll">
       {/* Background grid pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzAgMzBoMzB2MzBIMzB6TTAgMGgzMHYzMEgweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIvPjwvZz48L3N2Zz4=')] opacity-50 -z-10"></div>
 
@@ -65,7 +65,7 @@ const WhyLisaSection = () => {
               className="luxury-card transform transition-all hover:-translate-y-2"
               style={{ animationDelay: `${0.3 + feature.delay}s` }}
             >
-              <div className="text-5xl mb-6 bg-gradient-to-br from-lisa-blue to-lisa-purple w-20 h-20 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(30,203,225,0.2)]">
+              <div className="text-5xl mb-6 bg-gradient-to-br from-CLARA-blue to-CLARA-purple w-20 h-20 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(30,203,225,0.2)]">
                 {feature.icon}
               </div>
               <h3 className="text-xl md:text-2xl font-semibold mb-4">{feature.title}</h3>
@@ -79,7 +79,7 @@ const WhyLisaSection = () => {
         
         <div className="text-center mt-16">
           <div className="inline-block luxury-card py-3 px-6 text-white/80 text-lg">
-            "We replaced 4 tools with LISA in 48 hours."
+            "We replaced 4 tools with CLARA in 48 hours."
           </div>
         </div>
       </div>
