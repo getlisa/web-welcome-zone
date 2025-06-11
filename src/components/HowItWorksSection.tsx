@@ -11,7 +11,7 @@ const steps = [
   {
     id: 2,
     title: "Seamless Integration",
-    description: "LISA connects with your existing systems without disrupting your team's workflow.",
+    description: "CLARA connects with your existing systems without disrupting your team's workflow.",
     icon: "🔄"
   },
   {
@@ -56,10 +56,10 @@ const HowItWorksSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 fade-in-scroll opacity-0">
-            How <span className="text-lisa-green">LISA</span> Works
+            How <span className="text-lisa-green">CLARA</span> Works
           </h2>
           <p className="text-lg text-lisa-gray-600 fade-in-scroll opacity-0" style={{ animationDelay: '0.2s' }}>
-            We designed LISA to fit your business, not the other way around.
+            We designed CLARA to fit your business, not the other way around.
           </p>
         </div>
         
@@ -95,7 +95,7 @@ const HowItWorksSection = () => {
             ))}
           </div>
           <p className="text-center mt-10 text-lisa-gray-600">
-            No coding required. No tech expertise needed. LISA adapts to your current setup.
+            No coding required. No tech expertise needed. CLARA adapts to your current setup.
           </p>
         </div>
       </div>
