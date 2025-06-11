@@ -39,17 +39,17 @@ const ExplainerSection = () => {
           </h2>
           
           <p className="text-xl text-white/80 mb-16 max-w-3xl mx-auto">
-            LISA isn't just software. She's your new growth engine — made of AI agents that work like employees. Each one is purpose-built for a task. Train it once. Let it run. Scale instantly without adding headcount.
+            CLARA AI isn't just software. She's your new growth engine — made of AI agents that work like employees. Each one is purpose-built for a task. Train it once. Let it run. Scale instantly without adding headcount.
           </p>
           
-          {/* LISA Brain Diagram */}
+          {/* CLARA Brain Diagram */}
           <div className="relative w-full max-w-4xl mx-auto aspect-square">
             {/* Center circle - Now using an image */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full glass flex items-center justify-center z-10 animate-pulse-glow">
               <div className="text-center">
                 <img 
-                  src="https://zentrades.pro/wp-content/uploads/2025/05/52213e-540-x-540-px-2.png" 
-                  alt="LISA AI Brain" 
+                  src="https://zentrades.pro/wp-content/uploads/2025/06/clara_logo-scaled.png" 
+                  alt="CLARA AI Brain" 
                   className="w-24 h-24 mx-auto mb-2"
                 />
               </div>
