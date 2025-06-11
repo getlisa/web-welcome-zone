@@ -141,7 +141,7 @@ const HeroSection = () => {
             className="text-xl md:text-2xl text-white/80 mb-12 reveal-on-scroll opacity-0 text-center"
             style={{ animationDelay: '0.6s' }}
           >
-            LISA gives you a team of autonomous AI agents trained to execute, not assist. From lead generation to research, reporting, outreach, and beyond — LISA does the work, so your team can scale.
+            ClARA gives you a team of autonomous AI agents trained to execute, not assist. From lead generation to research, reporting, outreach, and beyond — CLARA does the work, so your team can scale.
           </p>
           
           <div 
