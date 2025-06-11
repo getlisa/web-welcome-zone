@@ -32,7 +32,7 @@ const Navbar = () => {
           <a href="#" className="flex items-center mb-4 md:mb-0 md:mr-auto">
             <img 
               src="https://zentrades.pro/wp-content/uploads/2025/05/52213e-540-x-540-px-2.png" 
-              alt="LISA Logo" 
+              alt="CLARA Logo" 
               className="h-16 mr-2"
             />
            
@@ -44,7 +44,7 @@ const Navbar = () => {
               href="#explainer" 
               className="text-white/80 hover:text-warmBlush relative overflow-hidden group transition-colors"
             >
-              <span>How Lisa Works</span>
+              <span>How CLARA Works</span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-luxury transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
             </a>
             <a 
@@ -96,7 +96,7 @@ const Navbar = () => {
       }`}>
         <div className="container mx-auto px-4 flex flex-col space-y-4">
           <a href="#explainer" className="text-white hover:text-warmBlush transition-colors py-2">
-            How Lisa Works
+            How CLARA Works
           </a>
           <a href="#agents" className="text-white hover:text-warmBlush transition-colors py-2">
             Use Cases
