@@ -34,7 +34,7 @@ const DemoCtaSection = () => {
           <div className="glass-card backdrop-blur-lg border border-white/10">
             <div className="p-8 md:p-12 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-6">
-                Want to see how your team could run faster, leaner, smarter with LISA?
+                Want to see how your team could run faster, leaner, smarter with CLARA AI?
               </h3>
               
               <div className="flex flex-col sm:flex-row justify-center gap-6">
