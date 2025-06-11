@@ -8,7 +8,7 @@ const FooterSection = () => {
         <div className="grid md:grid-cols-2 gap-10 pb-16 border-b border-white/10">
           <div>
             <div className="mb-6">
-              <span className="text-2xl font-sora font-bold gradient-text">LISA</span>
+              <span className="text-2xl font-sora font-bold gradient-text">CLARA</span>
             </div>
             <p className="text-white/70 mb-6">
               The AI platform designed specifically for autonomous business operations.
@@ -32,7 +32,7 @@ const FooterSection = () => {
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Use Cases</h3>
             <ul className="space-y-4">
-              <li><a href="#explainer" className="text-white/70 hover:text-lisa-blue transition-colors">How Lisa Works</a></li>
+              <li><a href="#explainer" className="text-white/70 hover:text-lisa-blue transition-colors">How Clara Works</a></li>
               <li><a href="#agents" className="text-white/70 hover:text-lisa-blue transition-colors">Use Cases</a></li>
               <li><a href="#why-lisa" className="text-white/70 hover:text-lisa-blue transition-colors">Tailored for you</a></li>
               <li><a href="#calculator" className="text-white/70 hover:text-lisa-blue transition-colors">Why AI</a></li>
@@ -42,7 +42,7 @@ const FooterSection = () => {
         
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-white/50 mb-4 md:mb-0">
-            © 2025 LISA AI. All rights reserved.
+            © 2025 CLARA AI. All rights reserved.
           </div>
           <div className="flex space-x-6">
             <a href="#" className="text-white/50 hover:text-lisa-blue transition-colors">Privacy Policy</a>
