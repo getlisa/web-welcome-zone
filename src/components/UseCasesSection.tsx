@@ -64,7 +64,7 @@ const UseCasesSection = () => {
             Real <span className="text-lisa-green">Impact</span> For Your Business
           </h2>
           <p className="text-lg text-lisa-gray-600 use-case-reveal opacity-0" style={{ animationDelay: '0.2s' }}>
-            See how LISA transforms critical areas of your trades business with practical AI solutions.
+            See how CLARA transforms critical areas of your trades business with practical AI solutions.
           </p>
         </div>
         
