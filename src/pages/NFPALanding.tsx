@@ -53,20 +53,33 @@ const NFPALanding = () => {
 
     const selectedPhoneNumber = agentPhoneNumbers[formData.agentType as keyof typeof agentPhoneNumbers];
     
-    // Simulate call trigger with specific number
-    setIsCallTriggered(true);
-    toast({
-      title: "Call Initiated!",
-      description: `Clara Voice (${formData.agentType}) will call you at ${formData.phone} from ${selectedPhoneNumber} within the next minute.`,
-    });
+    // Trigger actual call
+    try {
+      // For mobile devices, use tel: protocol to initiate call
+      window.open(`tel:${selectedPhoneNumber}`, '_self');
+      
+      setIsCallTriggered(true);
+      toast({
+        title: "Call Initiated!",
+        description: `Calling ${selectedPhoneNumber} (${formData.agentType}) - you should receive a call shortly.`,
+      });
 
-    // Here you would integrate with your actual calling system
-    console.log('Connecting call:', {
-      userPhone: formData.phone,
-      agentType: formData.agentType,
-      agentNumber: selectedPhoneNumber,
-      userData: formData
-    });
+      // Log the call attempt with user data
+      console.log('Call initiated:', {
+        userPhone: formData.phone,
+        agentType: formData.agentType,
+        agentNumber: selectedPhoneNumber,
+        userData: formData,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error('Error initiating call:', error);
+      toast({
+        title: "Call Error",
+        description: "Unable to initiate call. Please try again or call directly.",
+        variant: "destructive"
+      });
+    }
   };
 
   const submitMeetingRequest = () => {
