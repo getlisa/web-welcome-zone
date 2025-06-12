@@ -33,10 +33,44 @@ const NFPALanding = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const checkSupabaseConnection = async () => {
+    try {
+      console.log('Testing Supabase connection...');
+      console.log('Supabase URL:', supabase.supabaseUrl);
+      console.log('Supabase Key (first 20 chars):', supabase.supabaseKey?.substring(0, 20) + '...');
+      
+      // Try to list all tables to see what's available
+      const { data: tables, error: tablesError } = await supabase
+        .from('information_schema.tables')
+        .select('table_name')
+        .eq('table_schema', 'public');
+        
+      console.log('Available tables:', tables);
+      if (tablesError) {
+        console.error('Error fetching tables:', tablesError);
+      }
+      
+      // Try a simple query to test basic connection
+      const { data: testData, error: testError } = await supabase
+        .from('nfpa_form_submissions')
+        .select('count(*)')
+        .limit(1);
+        
+      console.log('Test query result:', testData);
+      console.log('Test query error:', testError);
+      
+    } catch (error) {
+      console.error('Connection test failed:', error);
+    }
+  };
+
   const saveFormDataToSupabase = async () => {
     try {
       console.log('Attempting to save form data:', formData);
       console.log('Supabase client initialized:', !!supabase);
+      
+      // First, let's test the connection
+      await checkSupabaseConnection();
       
       const dataToInsert = {
         name: formData.name,
