@@ -36,23 +36,34 @@ const NFPALanding = () => {
   const saveFormDataToSupabase = async () => {
     try {
       console.log('Attempting to save form data:', formData);
+      console.log('Supabase client initialized:', !!supabase);
+      
+      const dataToInsert = {
+        name: formData.name,
+        company: formData.company || null,
+        email: formData.email,
+        phone: formData.phone,
+        agent_type: formData.agentType,
+        created_at: new Date().toISOString()
+      };
+      
+      console.log('Data to insert:', dataToInsert);
       
       const { data, error } = await supabase
         .from('nfpa_form_submissions')
-        .insert([
-          {
-            name: formData.name,
-            company: formData.company,
-            email: formData.email,
-            phone: formData.phone,
-            agent_type: formData.agentType,
-            created_at: new Date().toISOString()
-          }
-        ])
+        .insert([dataToInsert])
         .select();
 
+      console.log('Supabase response - data:', data);
+      console.log('Supabase response - error:', error);
+
       if (error) {
-        console.error('Supabase error:', error);
+        console.error('Supabase error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        });
         toast({
           title: "Data Save Error",
           description: `Failed to save form data: ${error.message}`,
@@ -71,7 +82,7 @@ const NFPALanding = () => {
       console.error('Error saving to Supabase:', error);
       toast({
         title: "Database Error",
-        description: "Failed to connect to database.",
+        description: `Failed to connect to database: ${error instanceof Error ? error.message : 'Unknown error'}`,
         variant: "destructive"
       });
       return false;
