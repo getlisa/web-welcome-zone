@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -36,31 +35,26 @@ const NFPALanding = () => {
   const checkSupabaseConnection = async () => {
     try {
       console.log('Testing Supabase connection...');
-      console.log('Supabase URL:', supabase.supabaseUrl);
-      console.log('Supabase Key (first 20 chars):', supabase.supabaseKey?.substring(0, 20) + '...');
       
-      // Try to list all tables to see what's available
-      const { data: tables, error: tablesError } = await supabase
-        .from('information_schema.tables')
-        .select('table_name')
-        .eq('table_schema', 'public');
-        
-      console.log('Available tables:', tables);
-      if (tablesError) {
-        console.error('Error fetching tables:', tablesError);
-      }
-      
-      // Try a simple query to test basic connection
+      // Try a simple query to test if the table exists
       const { data: testData, error: testError } = await supabase
         .from('nfpa_form_submissions')
-        .select('count(*)')
+        .select('*')
         .limit(1);
         
       console.log('Test query result:', testData);
       console.log('Test query error:', testError);
       
+      if (testError) {
+        console.error('Table test failed:', testError);
+        return false;
+      }
+      
+      return true;
+      
     } catch (error) {
       console.error('Connection test failed:', error);
+      return false;
     }
   };
 
@@ -70,7 +64,16 @@ const NFPALanding = () => {
       console.log('Supabase client initialized:', !!supabase);
       
       // First, let's test the connection
-      await checkSupabaseConnection();
+      const connectionTest = await checkSupabaseConnection();
+      
+      if (!connectionTest) {
+        toast({
+          title: "Database Table Missing",
+          description: "The nfpa_form_submissions table doesn't exist in your Supabase database. Please create it first.",
+          variant: "destructive"
+        });
+        return false;
+      }
       
       const dataToInsert = {
         name: formData.name,
