@@ -27,11 +27,6 @@ const NFPALanding = () => {
   });
   const [isCallTriggered, setIsCallTriggered] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [meetingData, setMeetingData] = useState({
-    preferredDate: '',
-    preferredTime: '',
-    notes: ''
-  });
   const { toast } = useToast();
 
   const handleInputChange = (field: string, value: string) => {
@@ -129,19 +124,19 @@ const NFPALanding = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Mobile-First Header */}
-      <header className="flex flex-col sm:flex-row justify-between items-center p-3 sm:p-6 border-b border-slate-700 gap-3">
-        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+      {/* Mobile-First Header - Row layout for all screen sizes */}
+      <header className="flex flex-row justify-between items-center p-3 sm:p-6 border-b border-slate-700">
+        <div className="flex flex-row items-center gap-2 sm:gap-4">
           <img 
             src="/lovable-uploads/15b3278b-98de-49a5-95ed-2fafa2b9a3b2.png" 
             alt="CLARA AI Logo" 
             className="h-6 sm:h-10 w-auto"
           />
-          <div className="px-2 py-1 bg-red-600 text-white text-xs rounded-full text-center">
+          <div className="px-2 py-1 bg-red-600 text-white text-xs rounded-full">
             🔴 Live at NFPA Expo 2025
           </div>
         </div>
-        <div className="text-center sm:text-right text-white">
+        <div className="text-right text-white">
           <div className="font-semibold text-xs sm:text-base">Visit us at Booth #1457</div>
           <div className="text-xs text-slate-300">Live AI Demo Available</div>
         </div>
@@ -301,68 +296,9 @@ const NFPALanding = () => {
 
                 {isCallTriggered && (
                   <div className="mt-4 p-3 bg-green-900/30 border border-green-600 rounded-lg">
-                    <p className="text-green-300 text-center mb-3 text-xs sm:text-sm">
-                      🎉 Great! Clara Voice will call you shortly. Want to schedule a follow-up meeting after the conference?
+                    <p className="text-green-300 text-center text-xs sm:text-sm">
+                      🎉 Great! Clara Voice will call you shortly. We'll follow up with you to schedule a personalized demo after the conference.
                     </p>
-                    
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button variant="outline" className="w-full border-green-600 text-green-300 hover:bg-green-900/50 text-xs sm:text-sm py-2">
-                          <Calendar className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                          Schedule Follow-up Meeting
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="bg-slate-800 border-slate-700 mx-4 sm:mx-0 max-w-sm sm:max-w-md">
-                        <DialogHeader>
-                          <DialogTitle className="text-white text-sm sm:text-base">Schedule a Follow-up Meeting</DialogTitle>
-                        </DialogHeader>
-                        <div className="space-y-3 sm:space-y-4">
-                          <div>
-                            <Label htmlFor="preferredDate" className="text-white text-xs sm:text-sm">Preferred Date</Label>
-                            <Input
-                              id="preferredDate"
-                              type="date"
-                              value={meetingData.preferredDate}
-                              onChange={(e) => handleMeetingInputChange('preferredDate', e.target.value)}
-                              className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
-                            />
-                          </div>
-                          <div>
-                            <Label htmlFor="preferredTime" className="text-white text-xs sm:text-sm">Preferred Time</Label>
-                            <Select value={meetingData.preferredTime} onValueChange={(value) => handleMeetingInputChange('preferredTime', value)}>
-                              <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm">
-                                <SelectValue placeholder="Select time slot" />
-                              </SelectTrigger>
-                              <SelectContent className="bg-slate-700 border-slate-600">
-                                <SelectItem value="9:00 AM">9:00 AM</SelectItem>
-                                <SelectItem value="10:00 AM">10:00 AM</SelectItem>
-                                <SelectItem value="11:00 AM">11:00 AM</SelectItem>
-                                <SelectItem value="1:00 PM">1:00 PM</SelectItem>
-                                <SelectItem value="2:00 PM">2:00 PM</SelectItem>
-                                <SelectItem value="3:00 PM">3:00 PM</SelectItem>
-                                <SelectItem value="4:00 PM">4:00 PM</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div>
-                            <Label htmlFor="notes" className="text-white text-xs sm:text-sm">Additional Notes</Label>
-                            <Input
-                              id="notes"
-                              placeholder="Any specific topics you'd like to discuss..."
-                              value={meetingData.notes}
-                              onChange={(e) => handleMeetingInputChange('notes', e.target.value)}
-                              className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
-                            />
-                          </div>
-                          <Button
-                            onClick={submitMeetingRequest}
-                            className="w-full bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm py-2"
-                          >
-                            Submit Meeting Request
-                          </Button>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
                   </div>
                 )}
               </CardContent>
