@@ -11,7 +11,7 @@ import { PhoneCall, Calendar } from 'lucide-react';
 
 // Phone numbers for different agent types
 const agentPhoneNumbers = {
-  'Customer Service Representative': '+1-555-001-0001',
+  'Customer Service Representative': '+15392071364',
   'Fire Inspector': '+1-555-002-0002',
   'Emergency Response': '+1-555-003-0003',
   'Sales Agent': '+1-555-004-0004'
