@@ -9,6 +9,14 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useToast } from '@/hooks/use-toast';
 import { PhoneCall, Calendar } from 'lucide-react';
 
+// Phone numbers for different agent types
+const agentPhoneNumbers = {
+  'Customer Service Representative': '+1-555-001-0001',
+  'Fire Inspector': '+1-555-002-0002',
+  'Emergency Response': '+1-555-003-0003',
+  'Sales Agent': '+1-555-004-0004'
+};
+
 const NFPALanding = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -43,11 +51,21 @@ const NFPALanding = () => {
       return;
     }
 
-    // Simulate call trigger
+    const selectedPhoneNumber = agentPhoneNumbers[formData.agentType as keyof typeof agentPhoneNumbers];
+    
+    // Simulate call trigger with specific number
     setIsCallTriggered(true);
     toast({
       title: "Call Initiated!",
-      description: "Clara Voice will call you within the next minute to demonstrate our AI capabilities.",
+      description: `Clara Voice (${formData.agentType}) will call you at ${formData.phone} from ${selectedPhoneNumber} within the next minute.`,
+    });
+
+    // Here you would integrate with your actual calling system
+    console.log('Connecting call:', {
+      userPhone: formData.phone,
+      agentType: formData.agentType,
+      agentNumber: selectedPhoneNumber,
+      userData: formData
     });
   };
 
@@ -60,48 +78,52 @@ const NFPALanding = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Header */}
-      <header className="flex justify-between items-center p-6 border-b border-slate-700">
-        <div className="flex items-center gap-4">
-          <div className="text-white font-bold text-xl">CLARA AI</div>
-          <div className="px-3 py-1 bg-red-600 text-white text-sm rounded-full">
+      {/* Mobile-First Header */}
+      <header className="flex flex-col sm:flex-row justify-between items-center p-4 sm:p-6 border-b border-slate-700 gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+          <img 
+            src="/lovable-uploads/15b3278b-98de-49a5-95ed-2fafa2b9a3b2.png" 
+            alt="CLARA AI Logo" 
+            className="h-8 sm:h-10 w-auto"
+          />
+          <div className="px-3 py-1 bg-red-600 text-white text-xs sm:text-sm rounded-full text-center">
             🔴 Live at NFPA Expo 2025
           </div>
         </div>
-        <div className="text-right text-white">
-          <div className="font-semibold">Visit us at Booth #1457</div>
-          <div className="text-sm text-slate-300">Live AI Demo Available</div>
+        <div className="text-center sm:text-right text-white">
+          <div className="font-semibold text-sm sm:text-base">Visit us at Booth #1457</div>
+          <div className="text-xs sm:text-sm text-slate-300">Live AI Demo Available</div>
         </div>
       </header>
 
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Content */}
-          <div className="space-y-8">
-            <div>
-              <h1 className="text-5xl font-bold text-white mb-4">
+      <div className="container mx-auto px-4 py-6 sm:py-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          {/* Content Section - Mobile First */}
+          <div className="order-2 lg:order-1 space-y-6 sm:space-y-8">
+            <div className="text-center lg:text-left">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 Clara Voice
               </h1>
-              <p className="text-xl text-slate-300 mb-2">by Clara AI</p>
+              <p className="text-lg sm:text-xl text-slate-300 mb-2">by Clara AI</p>
               
-              <h2 className="text-3xl font-bold text-white mb-6">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">
                 The Only <span className="text-red-500">AI Voice Agent</span> Fire & Life Safety Businesses Need
               </h2>
               
-              <p className="text-lg text-slate-300 mb-8">
+              <p className="text-base sm:text-lg text-slate-300 mb-6 sm:mb-8">
                 Experience Clara Voice live! Get a call within a minute to have a real conversation and see its capabilities firsthand. Your AI voice agent will be fully customized to handle fire inspections, emergency calls, compliance checks, and customer service for your fire & life safety business.
               </p>
             </div>
 
-            {/* Feature Cards */}
-            <div className="space-y-6">
+            {/* Feature Cards - Stacked on Mobile */}
+            <div className="space-y-4 sm:space-y-6">
               <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="text-2xl">🔥</div>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="text-xl sm:text-2xl">🔥</div>
                     <div>
-                      <h3 className="text-white font-semibold mb-2">Never Miss a Critical Call Again</h3>
-                      <p className="text-slate-300 text-sm">
+                      <h3 className="text-white font-semibold mb-2 text-sm sm:text-base">Never Miss a Critical Call Again</h3>
+                      <p className="text-slate-300 text-xs sm:text-sm">
                         Fire inspection requests often come at high-stakes moments. Clara Voice ensures every call — even after-hours or during site visits — is answered instantly, professionally, and routed with urgency. No more voicemails. No lost jobs.
                       </p>
                     </div>
@@ -110,12 +132,12 @@ const NFPALanding = () => {
               </Card>
 
               <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="text-2xl">🧠</div>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="text-xl sm:text-2xl">🧠</div>
                     <div>
-                      <h3 className="text-white font-semibold mb-2">Smarter Conversations, Not Just Call Taking</h3>
-                      <p className="text-slate-300 text-sm">
+                      <h3 className="text-white font-semibold mb-2 text-sm sm:text-base">Smarter Conversations, Not Just Call Taking</h3>
+                      <p className="text-slate-300 text-xs sm:text-sm">
                         Clara Voice does more than answer calls — it understands context. Whether it's an inspection report request, a service emergency, or a new job inquiry, our AI gathers accurate details and books directly into your workflow (like ZenFire).
                       </p>
                     </div>
@@ -124,12 +146,12 @@ const NFPALanding = () => {
               </Card>
 
               <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="text-2xl">💰</div>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="text-xl sm:text-2xl">💰</div>
                     <div>
-                      <h3 className="text-white font-semibold mb-2">Cut Costs, Not Customer Experience</h3>
-                      <p className="text-slate-300 text-sm">
+                      <h3 className="text-white font-semibold mb-2 text-sm sm:text-base">Cut Costs, Not Customer Experience</h3>
+                      <p className="text-slate-300 text-xs sm:text-sm">
                         Replace expensive answering services with an AI agent that works 24/7, scales with you, and costs a fraction of what you're paying today — while delivering a consistent, branded customer experience every time.
                       </p>
                     </div>
@@ -139,68 +161,68 @@ const NFPALanding = () => {
             </div>
           </div>
 
-          {/* Right Side - Form */}
-          <div className="lg:sticky lg:top-8">
+          {/* Form Section - Mobile First, Sticky on Desktop */}
+          <div className="order-1 lg:order-2 w-full lg:sticky lg:top-8">
             <Card className="bg-slate-800/90 border-slate-700 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-white text-center text-2xl">
+              <CardHeader className="text-center">
+                <CardTitle className="text-white text-xl sm:text-2xl">
                   Talk to Clara Voice!
                 </CardTitle>
-                <p className="text-slate-300 text-center">
+                <p className="text-slate-300 text-sm sm:text-base">
                   Get a live demo call and experience Clara Voice in action
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <Label htmlFor="name" className="text-white">Name *</Label>
+                  <Label htmlFor="name" className="text-white text-sm">Name *</Label>
                   <Input
                     id="name"
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white"
+                    className="bg-slate-700 border-slate-600 text-white mt-1"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="company" className="text-white">Company Name</Label>
+                  <Label htmlFor="company" className="text-white text-sm">Company Name</Label>
                   <Input
                     id="company"
                     placeholder="ABC Fire Protection Services"
                     value={formData.company}
                     onChange={(e) => handleInputChange('company', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white"
+                    className="bg-slate-700 border-slate-600 text-white mt-1"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-white">Email *</Label>
+                  <Label htmlFor="email" className="text-white text-sm">Email *</Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="john@abcfire.com"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white"
+                    className="bg-slate-700 border-slate-600 text-white mt-1"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="phone" className="text-white">Phone Number *</Label>
+                  <Label htmlFor="phone" className="text-white text-sm">Phone Number *</Label>
                   <Input
                     id="phone"
                     type="tel"
                     placeholder="(555) 123-4567"
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white"
+                    className="bg-slate-700 border-slate-600 text-white mt-1"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="agentType" className="text-white">AI Voice Agent Type</Label>
+                  <Label htmlFor="agentType" className="text-white text-sm">AI Voice Agent Type</Label>
                   <Select value={formData.agentType} onValueChange={(value) => handleInputChange('agentType', value)}>
-                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
+                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-1">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-700 border-slate-600">
@@ -210,49 +232,54 @@ const NFPALanding = () => {
                       <SelectItem value="Sales Agent">Sales Agent</SelectItem>
                     </SelectContent>
                   </Select>
+                  {formData.agentType && (
+                    <p className="text-xs text-slate-400 mt-1">
+                      Will connect from: {agentPhoneNumbers[formData.agentType as keyof typeof agentPhoneNumbers]}
+                    </p>
+                  )}
                 </div>
 
                 <Button
                   onClick={triggerCall}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-6 text-lg font-semibold"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-4 sm:py-6 text-base sm:text-lg font-semibold"
                   disabled={isCallTriggered}
                 >
-                  <PhoneCall className="mr-2" />
+                  <PhoneCall className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   {isCallTriggered ? 'Call Initiated!' : 'Call me now!'}
                 </Button>
 
                 {isCallTriggered && (
                   <div className="mt-6 p-4 bg-green-900/30 border border-green-600 rounded-lg">
-                    <p className="text-green-300 text-center mb-4">
+                    <p className="text-green-300 text-center mb-4 text-sm">
                       🎉 Great! Clara Voice will call you shortly. Want to schedule a follow-up meeting after the conference?
                     </p>
                     
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button variant="outline" className="w-full border-green-600 text-green-300 hover:bg-green-900/50">
-                          <Calendar className="mr-2" />
+                          <Calendar className="mr-2 h-4 w-4" />
                           Schedule Follow-up Meeting
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="bg-slate-800 border-slate-700">
+                      <DialogContent className="bg-slate-800 border-slate-700 mx-4 sm:mx-0">
                         <DialogHeader>
                           <DialogTitle className="text-white">Schedule a Follow-up Meeting</DialogTitle>
                         </DialogHeader>
                         <div className="space-y-4">
                           <div>
-                            <Label htmlFor="preferredDate" className="text-white">Preferred Date</Label>
+                            <Label htmlFor="preferredDate" className="text-white text-sm">Preferred Date</Label>
                             <Input
                               id="preferredDate"
                               type="date"
                               value={meetingData.preferredDate}
                               onChange={(e) => handleMeetingInputChange('preferredDate', e.target.value)}
-                              className="bg-slate-700 border-slate-600 text-white"
+                              className="bg-slate-700 border-slate-600 text-white mt-1"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="preferredTime" className="text-white">Preferred Time</Label>
+                            <Label htmlFor="preferredTime" className="text-white text-sm">Preferred Time</Label>
                             <Select value={meetingData.preferredTime} onValueChange={(value) => handleMeetingInputChange('preferredTime', value)}>
-                              <SelectTrigger className="bg-slate-700 border-slate-600 text-white">
+                              <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-1">
                                 <SelectValue placeholder="Select time slot" />
                               </SelectTrigger>
                               <SelectContent className="bg-slate-700 border-slate-600">
@@ -267,13 +294,13 @@ const NFPALanding = () => {
                             </Select>
                           </div>
                           <div>
-                            <Label htmlFor="notes" className="text-white">Additional Notes</Label>
+                            <Label htmlFor="notes" className="text-white text-sm">Additional Notes</Label>
                             <Input
                               id="notes"
                               placeholder="Any specific topics you'd like to discuss..."
                               value={meetingData.notes}
                               onChange={(e) => handleMeetingInputChange('notes', e.target.value)}
-                              className="bg-slate-700 border-slate-600 text-white"
+                              className="bg-slate-700 border-slate-600 text-white mt-1"
                             />
                           </div>
                           <Button
