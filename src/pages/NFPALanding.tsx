@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
 import { PhoneCall, Calendar } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
 
 // Phone numbers for different agent types
 const agentPhoneNumbers = {
@@ -26,6 +26,7 @@ const NFPALanding = () => {
     agentType: 'Customer Service Representative'
   });
   const [isCallTriggered, setIsCallTriggered] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [meetingData, setMeetingData] = useState({
     preferredDate: '',
     preferredTime: '',
@@ -41,7 +42,37 @@ const NFPALanding = () => {
     setMeetingData(prev => ({ ...prev, [field]: value }));
   };
 
-  const triggerCall = () => {
+  const saveFormDataToSupabase = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('nfpa_form_submissions')
+        .insert([
+          {
+            name: formData.name,
+            company: formData.company,
+            email: formData.email,
+            phone: formData.phone,
+            agent_type: formData.agentType,
+            created_at: new Date().toISOString()
+          }
+        ]);
+
+      if (error) {
+        console.error('Supabase error:', error);
+        toast({
+          title: "Data Save Error",
+          description: "Failed to save form data. Call will still proceed.",
+          variant: "destructive"
+        });
+      } else {
+        console.log('Form data saved successfully:', data);
+      }
+    } catch (error) {
+      console.error('Error saving to Supabase:', error);
+    }
+  };
+
+  const triggerCall = async () => {
     if (!formData.name || !formData.phone || !formData.email) {
       toast({
         title: "Missing Information",
@@ -50,6 +81,11 @@ const NFPALanding = () => {
       });
       return;
     }
+
+    setIsSubmitting(true);
+
+    // Save form data to Supabase
+    await saveFormDataToSupabase();
 
     const selectedPhoneNumber = agentPhoneNumbers[formData.agentType as keyof typeof agentPhoneNumbers];
     
@@ -79,6 +115,8 @@ const NFPALanding = () => {
         description: "Unable to initiate call. Please try again or call directly.",
         variant: "destructive"
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -92,27 +130,27 @@ const NFPALanding = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Mobile-First Header */}
-      <header className="flex flex-col sm:flex-row justify-between items-center p-4 sm:p-6 border-b border-slate-700 gap-4">
+      <header className="flex flex-col sm:flex-row justify-between items-center p-3 sm:p-6 border-b border-slate-700 gap-3">
         <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
           <img 
             src="/lovable-uploads/15b3278b-98de-49a5-95ed-2fafa2b9a3b2.png" 
             alt="CLARA AI Logo" 
-            className="h-8 sm:h-10 w-auto"
+            className="h-6 sm:h-10 w-auto"
           />
-          <div className="px-3 py-1 bg-red-600 text-white text-xs sm:text-sm rounded-full text-center">
+          <div className="px-2 py-1 bg-red-600 text-white text-xs rounded-full text-center">
             🔴 Live at NFPA Expo 2025
           </div>
         </div>
         <div className="text-center sm:text-right text-white">
-          <div className="font-semibold text-sm sm:text-base">Visit us at Booth #1457</div>
-          <div className="text-xs sm:text-sm text-slate-300">Live AI Demo Available</div>
+          <div className="font-semibold text-xs sm:text-base">Visit us at Booth #1457</div>
+          <div className="text-xs text-slate-300">Live AI Demo Available</div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-6 sm:py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Content Section - Mobile First */}
-          <div className="order-2 lg:order-1 space-y-6 sm:space-y-8">
+      <div className="container mx-auto px-3 py-4 sm:py-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-start">
+          {/* Content Section - Hidden on mobile to save space */}
+          <div className="order-2 lg:order-1 space-y-4 sm:space-y-8 hidden lg:block">
             <div className="text-center lg:text-left">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 Clara Voice
@@ -174,68 +212,68 @@ const NFPALanding = () => {
             </div>
           </div>
 
-          {/* Form Section - Mobile First, Sticky on Desktop */}
+          {/* Form Section - Full width on mobile, optimized for single screen */}
           <div className="order-1 lg:order-2 w-full lg:sticky lg:top-8">
             <Card className="bg-slate-800/90 border-slate-700 backdrop-blur-sm">
-              <CardHeader className="text-center">
-                <CardTitle className="text-white text-xl sm:text-2xl">
+              <CardHeader className="text-center pb-3 sm:pb-6">
+                <CardTitle className="text-white text-lg sm:text-2xl">
                   Talk to Clara Voice!
                 </CardTitle>
-                <p className="text-slate-300 text-sm sm:text-base">
+                <p className="text-slate-300 text-xs sm:text-base">
                   Get a live demo call and experience Clara Voice in action
                 </p>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3 sm:space-y-4 px-4 sm:px-6">
                 <div>
-                  <Label htmlFor="name" className="text-white text-sm">Name *</Label>
+                  <Label htmlFor="name" className="text-white text-xs sm:text-sm">Name *</Label>
                   <Input
                     id="name"
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white mt-1"
+                    className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="company" className="text-white text-sm">Company Name</Label>
+                  <Label htmlFor="company" className="text-white text-xs sm:text-sm">Company Name</Label>
                   <Input
                     id="company"
                     placeholder="ABC Fire Protection Services"
                     value={formData.company}
                     onChange={(e) => handleInputChange('company', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white mt-1"
+                    className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-white text-sm">Email *</Label>
+                  <Label htmlFor="email" className="text-white text-xs sm:text-sm">Email *</Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="john@abcfire.com"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white mt-1"
+                    className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="phone" className="text-white text-sm">Phone Number *</Label>
+                  <Label htmlFor="phone" className="text-white text-xs sm:text-sm">Phone Number *</Label>
                   <Input
                     id="phone"
                     type="tel"
                     placeholder="(555) 123-4567"
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white mt-1"
+                    className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="agentType" className="text-white text-sm">AI Voice Agent Type</Label>
+                  <Label htmlFor="agentType" className="text-white text-xs sm:text-sm">AI Voice Agent Type</Label>
                   <Select value={formData.agentType} onValueChange={(value) => handleInputChange('agentType', value)}>
-                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-1">
+                    <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-700 border-slate-600">
@@ -254,45 +292,45 @@ const NFPALanding = () => {
 
                 <Button
                   onClick={triggerCall}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-4 sm:py-6 text-base sm:text-lg font-semibold"
-                  disabled={isCallTriggered}
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 sm:py-6 text-sm sm:text-lg font-semibold mt-4"
+                  disabled={isCallTriggered || isSubmitting}
                 >
-                  <PhoneCall className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  {isCallTriggered ? 'Call Initiated!' : 'Call me now!'}
+                  <PhoneCall className="mr-2 h-4 w-4" />
+                  {isSubmitting ? 'Connecting...' : isCallTriggered ? 'Call Initiated!' : 'Call me now!'}
                 </Button>
 
                 {isCallTriggered && (
-                  <div className="mt-6 p-4 bg-green-900/30 border border-green-600 rounded-lg">
-                    <p className="text-green-300 text-center mb-4 text-sm">
+                  <div className="mt-4 p-3 bg-green-900/30 border border-green-600 rounded-lg">
+                    <p className="text-green-300 text-center mb-3 text-xs sm:text-sm">
                       🎉 Great! Clara Voice will call you shortly. Want to schedule a follow-up meeting after the conference?
                     </p>
                     
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button variant="outline" className="w-full border-green-600 text-green-300 hover:bg-green-900/50">
-                          <Calendar className="mr-2 h-4 w-4" />
+                        <Button variant="outline" className="w-full border-green-600 text-green-300 hover:bg-green-900/50 text-xs sm:text-sm py-2">
+                          <Calendar className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                           Schedule Follow-up Meeting
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="bg-slate-800 border-slate-700 mx-4 sm:mx-0">
+                      <DialogContent className="bg-slate-800 border-slate-700 mx-4 sm:mx-0 max-w-sm sm:max-w-md">
                         <DialogHeader>
-                          <DialogTitle className="text-white">Schedule a Follow-up Meeting</DialogTitle>
+                          <DialogTitle className="text-white text-sm sm:text-base">Schedule a Follow-up Meeting</DialogTitle>
                         </DialogHeader>
-                        <div className="space-y-4">
+                        <div className="space-y-3 sm:space-y-4">
                           <div>
-                            <Label htmlFor="preferredDate" className="text-white text-sm">Preferred Date</Label>
+                            <Label htmlFor="preferredDate" className="text-white text-xs sm:text-sm">Preferred Date</Label>
                             <Input
                               id="preferredDate"
                               type="date"
                               value={meetingData.preferredDate}
                               onChange={(e) => handleMeetingInputChange('preferredDate', e.target.value)}
-                              className="bg-slate-700 border-slate-600 text-white mt-1"
+                              className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="preferredTime" className="text-white text-sm">Preferred Time</Label>
+                            <Label htmlFor="preferredTime" className="text-white text-xs sm:text-sm">Preferred Time</Label>
                             <Select value={meetingData.preferredTime} onValueChange={(value) => handleMeetingInputChange('preferredTime', value)}>
-                              <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-1">
+                              <SelectTrigger className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm">
                                 <SelectValue placeholder="Select time slot" />
                               </SelectTrigger>
                               <SelectContent className="bg-slate-700 border-slate-600">
@@ -307,18 +345,18 @@ const NFPALanding = () => {
                             </Select>
                           </div>
                           <div>
-                            <Label htmlFor="notes" className="text-white text-sm">Additional Notes</Label>
+                            <Label htmlFor="notes" className="text-white text-xs sm:text-sm">Additional Notes</Label>
                             <Input
                               id="notes"
                               placeholder="Any specific topics you'd like to discuss..."
                               value={meetingData.notes}
                               onChange={(e) => handleMeetingInputChange('notes', e.target.value)}
-                              className="bg-slate-700 border-slate-600 text-white mt-1"
+                              className="bg-slate-700 border-slate-600 text-white mt-1 h-8 sm:h-10 text-sm"
                             />
                           </div>
                           <Button
                             onClick={submitMeetingRequest}
-                            className="w-full bg-green-600 hover:bg-green-700 text-white"
+                            className="w-full bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm py-2"
                           >
                             Submit Meeting Request
                           </Button>
